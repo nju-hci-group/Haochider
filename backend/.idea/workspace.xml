@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5f0c26e4-e7f1-4e7e-b003-ee2fc9c93c48" name="Default" comment="">
+      <change beforePath="" afterPath="$APPLICATION_CONFIG_DIR$/options/py_sdk_settings.xml" />
+      <change beforePath="" afterPath="$APPLICATION_CONFIG_DIR$/options/updates.xml" />
+      <change beforePath="" afterPath="$APPLICATION_CONFIG_DIR$/options/usage.statistics.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/customerUI/BillsDetail.fxml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/customerUI/BillsDetail.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/customerUI/BillsItem.fxml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/customerUI/BillsItem.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/customerUI/BillsView.fxml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/customerUI/BillsView.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/customerUI/BillsVo.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/customerUI/HistoryItem.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/customerUI/HistoryView.fxml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/customerUI/HistoryView.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/customerUI/HistoryVo.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/customerUI/HistroyItem.fxml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/customerUI/PromotionView.fxml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/customerUI/PromotionView.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/hotelStaffUI/ApView.fxml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/hotelStaffUI/ApView.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/hotelStaffUI/ApVo.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/hotelStaffUI/BussinessAInfo.fxml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/hotelStaffUI/BussinessAInfo.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/hotelStaffUI/BussinessAVo.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/hotelStaffUI/BussinessDetail.fxml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/hotelStaffUI/BussinessDetail.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/hotelStaffUI/BussinessInfo.fxml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/hotelStaffUI/BussinessInfo.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/hotelStaffUI/BussinessItem.fxml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/hotelStaffUI/BussinessItem.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/hotelStaffUI/BussinessVo.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/hotelStaffUI/OccrateView.fxml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/hotelStaffUI/OccrateView.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/hotelStaffUI/OccrateVo.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/webMarketerUI/ApVo.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/webMarketerUI/AreaView.fxml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/webMarketerUI/AreaView.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/webMarketerUI/AreaVo.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/webMarketerUI/BussinessView.fxml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/webMarketerUI/BussinessView.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/webMarketerUI/FDetail.fxml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/webMarketerUI/FDetail.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/webMarketerUI/FVo.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/webMarketerUI/FinanceView.fxml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/webMarketerUI/FinanceView.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/webMarketerUI/HotalView.fxml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/webMarketerUI/HotalView.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/webMarketerUI/UaView.fxml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/webMarketerUI/UaView.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/main/java/nju/quadra/hms/ui/webMarketerUI/UaVo.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/common/AreaVO.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/common/HotelBLService.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/common/HotelPromotionBLService.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/common/HotelPromotionVO.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/common/HotelRoomBLService.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/common/HotelRoomVO.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/common/HotelSearchVO.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/common/HotelVO.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/common/MemberVO.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/common/OrderBLService.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/common/OrderDetailVO.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/common/OrderVO.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/common/PriceVO.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/common/UserBLService.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/common/UserVO.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/common/WebsitePromotionBLService.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/common/WebsitePromotionVO.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/server/AreaPO.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/server/HotelPO.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/server/HotelRoomPO.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/server/OrderBL.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/server/OrderDataService.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/server/OrderDataServiceImpl.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/server/OrderPO.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/server/UserDataServiceImpl.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/server/UserPO.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/server/WebsitePromotionDataServiceImpl.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/server/WebsitePromotionPO.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../erb/HMS/client/src/submit/server/package-info.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/getData.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/yummyModel.py" />
+      <change beforePath="" afterPath="$USER_HOME$/PycharmProjects/4bf8f1accea04e8dae0f7863bd89f4aa/.idea/4bf8f1accea04e8dae0f7863bd89f4aa.iml" />
+      <change beforePath="" afterPath="$USER_HOME$/PycharmProjects/4bf8f1accea04e8dae0f7863bd89f4aa/.idea/misc.xml" />
+      <change beforePath="" afterPath="$USER_HOME$/PycharmProjects/4bf8f1accea04e8dae0f7863bd89f4aa/.idea/modules.xml" />
+      <change beforePath="" afterPath="$USER_HOME$/PycharmProjects/4bf8f1accea04e8dae0f7863bd89f4aa/.idea/vcs.xml" />
+      <change beforePath="" afterPath="$USER_HOME$/PycharmProjects/4bf8f1accea04e8dae0f7863bd89f4aa/s's's.py" />
+      <change beforePath="" afterPath="$USER_HOME$/PycharmProjects/gay1/.idea/gay1.iml" />
+      <change beforePath="" afterPath="$USER_HOME$/PycharmProjects/gay1/.idea/modules.xml" />
+      <change beforePath="" afterPath="$USER_HOME$/PycharmProjects/gay1/.idea/workspace.xml" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-71">
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="yummyModel.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/yummyModel.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="281">
+              <caret line="117" column="6" lean-forward="false" selection-start-line="117" selection-start-column="6" selection-end-line="117" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$USER_HOME$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/__init__.py" />
+        <option value="$PROJECT_DIR$/getData.py" />
+        <option value="$PROJECT_DIR$/src/getData.py" />
+        <option value="$PROJECT_DIR$/src/app.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="width" value="976" />
+    <option name="height" value="1088" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="yummy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yummy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yummy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yummy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yummy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yummy" type="462c0819:PsiDirectoryNode" />
+              <item name="venv" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\76321\Desktop\第三学期\yummy" />
+      <recent name="C:\Users\76321\Desktop\第三学期\yummy\src" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\76321\Desktop\第三学期\yummy\src" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\76321\Desktop\第三学期\stock\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="yummy" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Python.app" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5f0c26e4-e7f1-4e7e-b003-ee2fc9c93c48" name="Default" comment="" />
+      <created>1560407283410</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1560407283410</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0075026797" sideWeight="0.5105708" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0075026797" sideWeight="0.48942918" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yummyModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2852">
+          <caret line="124" column="13" lean-forward="false" selection-start-line="124" selection-start-column="4" selection-end-line="124" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yummyModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yummyModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="11" column="10" lean-forward="false" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/peewee.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="756" column="8" lean-forward="false" selection-start-line="756" selection-start-column="8" selection-end-line="756" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../stock/venv/Lib/site-packages/peewee.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="1948" column="8" lean-forward="false" selection-start-line="1948" selection-start-column="8" selection-end-line="1948" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="11" lean-forward="false" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../stock/venv/Lib/site-packages/werkzeug/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="1118" column="0" lean-forward="false" selection-start-line="1118" selection-start-column="0" selection-end-line="1118" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yummyModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="117" column="6" lean-forward="false" selection-start-line="117" selection-start-column="6" selection-end-line="117" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-71">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

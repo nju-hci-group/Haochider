@@ -25,7 +25,7 @@ def customer():
         return jsonify({"name": session['username']})
     return "AccessDenied"
 
-@app.route('/Yummy/api//customer/sigh-in', methods=['POST'])
+@app.route('/Yummy/api/customer/sign-in', methods=['POST'])
 def login():
     email = request.args.get('email')
     pew=request.args.get('pwd')

@@ -110,34 +110,8 @@ export default {
       }
     },
     customerSignIn: function () {
-      this.$ajax({
-        url: '/customer/sign-in',
-        method: 'post',
-        params: {
-          email: this.username,
-          pwd: this.pwd
-        }
-      }).then((res) => {
-        switch (res.data.data['result']) {
-          case 0:
-            this['$router'].push('/customer/home')
-            this.errMsg = ''
-            this.snackbar = false
-            break
-          case 1:
-            this.errMsg = '帐号不存在'
-            this.snackbar = true
-            break
-          case 2:
-            this.errMsg = '密码错误'
-            this.snackbar = true
-            break
-          default:
-            this.errMsg = '未知错误'
-            this.snackbar = true
-            break
-        }
-      })
+      // Pretend to have signed in. Back end will always return the same customer.
+      this['$router'].push('/customer/home')
     }
   }
 }

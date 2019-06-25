@@ -4,8 +4,8 @@ database = MySQLDatabase('yummy', **{
     'charset': 'utf8', 
     'use_unicode': True, 
     'host': 'localhost', 
-    'user': 'rumia', 
-    'password': 'moonlight ray'
+    'user': 'root',
+    'password': 'Yy981211'
 })
 
 class UnknownField(object):

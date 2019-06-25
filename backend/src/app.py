@@ -49,8 +49,8 @@ def customer():
 
 @app.route('/Yummy/api/customer/sign-in', methods=['POST'])
 def login():
-
-    return jsonify({"result":0})
+    json=request.args.get("data")
+    return jsonify({"result":"success"})
 
 @app.route('/Yummy/api/restaurant/order/post', methods=['POST'])
 def orderpost():
@@ -99,20 +99,27 @@ def res_c():
         type_res.append(e.tagname)
     return jsonify({'code': 1, 'data': type_res})
 
+@app.route('/Yummy/api/restaurant/pictures', methods=['GET'])
+def res_p():
+    photo_data = []
+    photo_data.append({"https://fuss10.elemecdn.com/7afe0df785fe8e04f009cddf0ff372d5jpeg.jpeg", "E5545917783901406104"})
+    photo_data.append(
+        {"https://fuss10.elemecdn.com/f88c26b6c61ae96459894e864a56eb30jpeg.jpeg", "E14825464048244892398"})
+    photo_data.append(
+        {"https://fuss10.elemecdn.com/3b141a39ff987a7bbf99e509723c996ajpeg.jpeg", "E16200833748681328248"})
+    photo_data.append({"https://fuss10.elemecdn.com/b77341aca13efd12874b8d406ba29508jpeg.jpeg", "E6387385026588375130"})
+    photo_data.append(
+        {"https://fuss10.elemecdn.com/c1bd46c09210cc022484a9af0066772cjpeg.jpeg", "E11204101347899364163"})
+    photo_data.append({"https://fuss10.elemecdn.com/d5ccc3d3416a616d14ff128e39f3de48jpeg.jpeg", "E4850881976237283649"})
+    photo_data.append(
+        {"https://fuss10.elemecdn.com/016b2de4ab16fafeac00b678d469866ajpeg.jpeg", "E15056118707731574566"})
+    photo_data.append(
+        {"https://fuss10.elemecdn.com/6a8432cd40b20dab7b91edf8b0d9a3f1jpeg.jpeg", "E15056118707731574566"})
+    return jsonify({'code': 1, 'data':photo_data})
+
 @app.route('/Yummy/api/restaurant', methods=['GET'])
 def res_show():
     res_json = []
-    photo_data=[]
-    photo_data.append({"https://fuss10.elemecdn.com/7afe0df785fe8e04f009cddf0ff372d5jpeg.jpeg", "E5545917783901406104"})
-    photo_data.append({"https://fuss10.elemecdn.com/f88c26b6c61ae96459894e864a56eb30jpeg.jpeg", "E14825464048244892398"})
-    photo_data.append({"https://fuss10.elemecdn.com/3b141a39ff987a7bbf99e509723c996ajpeg.jpeg", "E16200833748681328248"})
-    photo_data.append({"https://fuss10.elemecdn.com/b77341aca13efd12874b8d406ba29508jpeg.jpeg", "E6387385026588375130"})
-    photo_data.append({"https://fuss10.elemecdn.com/c1bd46c09210cc022484a9af0066772cjpeg.jpeg", "E11204101347899364163"})
-    photo_data.append({"https://fuss10.elemecdn.com/d5ccc3d3416a616d14ff128e39f3de48jpeg.jpeg", "E4850881976237283649"})
-    photo_data.append({"https://fuss10.elemecdn.com/016b2de4ab16fafeac00b678d469866ajpeg.jpeg", "E15056118707731574566"})
-    photo_data.append({"https://fuss10.elemecdn.com/6a8432cd40b20dab7b91edf8b0d9a3f1jpeg.jpeg", "E15056118707731574566"})
-    res_json.append(photo_data)
-
     res_data=[]
 
     page=int(request.args.get("page"))
@@ -123,7 +130,7 @@ def res_show():
     for e in resa:
         res_data.append({e.rid,e.name,e.des,e.area,e.photo,random.choice("123456789")})
     res_json.append(res_data)
-    return jsonify({'code': 1, 'data': res_json})
+    return jsonify({'code': 1, 'data': res_data})
 if __name__ == '__main__':
     # http_server = WSGIServer(('',5000),app)
     # http_server.serve_forever()

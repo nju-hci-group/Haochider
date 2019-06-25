@@ -91,97 +91,98 @@
 </template>
 
 <script>
-  export default {
-    name: 'UserInfo',
-    data: function () {
-      return {
-        dialogFormVisible:false,
-        editDialogFormVisible:false,
-        form: {
-          address:'',
-          tel:''
-        },
-        formLabelWidth: '120px',
-        username:'蔡徐坤',
-        addresses:[{address:"江苏省南京市鼓楼区汉口路22号南京大学鼓楼校区陶园2舍407", tel:"15189585960"},
-          {address:"江苏省南京市鼓楼区汉口路22号南京大学鼓楼校区费彝民楼", tel:"13770752307"},
-          {address:"江苏省南京市鼓楼区汉口路22号南京大学鼓楼校区陶园2舍407", tel:"15189585960"},
-          {address:"江苏省南京市鼓楼区汉口路22号南京大学鼓楼校区陶园2舍407", tel:"15189585960"},
-          {address:"江苏省南京市鼓楼区汉口路22号南京大学鼓楼校区陶园2舍407", tel:"15189585960"},],
-        tabPosition:'left',
-        labelPosition: 'right',
-        UserInfos:{
-          avatar: 'https://inews.gtimg.com/newsapp_bt/0/7234467545/640',
-          name: '蔡徐坤'
-        }
+export default {
+  name: 'UserInfo',
+  data: function () {
+    return {
+      dialogFormVisible: false,
+      editDialogFormVisible: false,
+      form: {
+        address: '',
+        tel: ''
+      },
+      formLabelWidth: '120px',
+      username: '蔡徐坤',
+      addresses: [{address: '江苏省南京市鼓楼区汉口路22号南京大学鼓楼校区陶园2舍407', tel: '15189585960'},
+        {address: '江苏省南京市鼓楼区汉口路22号南京大学鼓楼校区费彝民楼', tel: '13770752307'},
+        {address: '江苏省南京市鼓楼区汉口路22号南京大学鼓楼校区陶园2舍407', tel: '15189585960'},
+        {address: '江苏省南京市鼓楼区汉口路22号南京大学鼓楼校区陶园2舍407', tel: '15189585960'},
+        {address: '江苏省南京市鼓楼区汉口路22号南京大学鼓楼校区陶园2舍407', tel: '15189585960'}],
+      tabPosition: 'left',
+      labelPosition: 'right',
+      UserInfos: {
+        avatar: 'https://inews.gtimg.com/newsapp_bt/0/7234467545/640',
+        name: '蔡徐坤'
+      }
+    }
+  },
+
+  methods: {
+    handleSelect (key, keyPath) {
+      console.log(key, keyPath)
+      if (key === '1') {
+        this.$router.push('/customer/home/MyOrders')
+      }
+      if (key === '2-1') {
+        this.$router.push('/customer/home/UserInfo')
+      }
+      if (key === '2-2') {
+        this.$router.push('/customer/home/AddressManage')
       }
     },
 
-    methods:{
-      handleSelect(key, keyPath) {
-        console.log(key, keyPath);
-        if (key === "1"){
-          this.$router.push('/customer/home/MyOrders')}
-        if (key === "2-1"){
-          this.$router.push('/customer/home/UserInfo')
+    getOrderDetail () {
+
+    },
+
+    orderAgain () {
+
+    },
+
+    editAddress (index) {
+      this.editDialogFormVisible = true
+      this.form = Object.assign({}, this.addresses[index])// 拷贝对应地址
+    },
+
+    saveEditedAddress (index) {
+      this.editDialogFormVisible = false
+      this.addresses[index].tel = this.form.tel
+      this.addresses[index].address = this.form.address
+      this.form.address = ''
+      this.form.tel = ''
+    },
+
+    cancelEditAddress () {
+      this.editDialogFormVisible = false
+      this.form.address = ''
+      this.form.tel = ''
+    },
+
+    deleteAddress (index) {
+      let restAddresses = this.addresses
+      let newAddresses = []
+      for (let i = 0; i < this.addresses.length; i++) {
+        if (i !== index) {
+          newAddresses.push(restAddresses[i])
         }
-        if (key === "2-2"){
-          this.$router.push('/customer/home/AddressManage')
-        }
-      },
-
-      getOrderDetail(){
-
-      },
-
-      orderAgain(){
-
-      },
-
-      editAddress(index){
-        this.editDialogFormVisible = true;
-        this.form =  Object.assign({}, this.addresses[index]);//拷贝对应地址
-      },
-
-      saveEditedAddress(index){
-        this.editDialogFormVisible = false;
-        this.addresses[index].tel = this.form.tel;
-        this.addresses[index].address = this.form.address;
-        this.form.address = "";
-        this.form.tel = "";
-      },
-
-      cancelEditAddress(){
-        this.editDialogFormVisible = false;
-        this.form.address = "";
-        this.form.tel = "";
-      },
-
-      deleteAddress(index){
-        let restAddresses = this.addresses;
-        let newAddresses = [];
-        for (let i = 0; i < this.addresses.length; i++){
-          if (i !== index){
-            newAddresses.push(restAddresses[i]);
-          }
-        }
-        this.addresses = newAddresses;
-      },
-
-      addAddress(){
-        this.dialogFormVisible = false;
-        this.addresses.push({address:this.form.address, tel:this.form.tel});
-        this.form.tel = "";
-        this.form.address = "";
-      },
-
-      cancelAddAddress(){
-        this.dialogFormVisible = false;
-        this.form.tel = "";
-        this.form.address = "";
       }
+      this.addresses = newAddresses
+    },
+
+    addAddress () {
+      this.dialogFormVisible = false
+      this.addresses.push({address: this.form.address, tel: this.form.tel})
+      this.form.tel = ''
+      this.form.address = ''
+    },
+
+    cancelAddAddress () {
+      this.dialogFormVisible = false
+      this.form.tel = ''
+      this.form.address = ''
     }
   }
+}
 </script>
 
 <style>

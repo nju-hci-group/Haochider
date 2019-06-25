@@ -250,6 +250,22 @@
       },
 
       loadInfo: function () {
+        /**
+         * response form: [
+         * {
+         *    id: 1
+         *    time: '2018-02-14 17:45:00'
+         *    avatar: 'XXXX'
+         *    price: 92.93,
+         *    orders:{
+         *        'xxx': {name: 'abc', price: 20.233, num: 1}, // key是菜品编号
+                  'xxxx': {name: 'bbc', price: 30.23, num: 1},
+                  'xxxxx': {name: 'cbc', price: 40.23, num: 1},
+         *    },
+         *    state: '订单已完成|订单已取消|等',
+         * }
+         * ]
+         */
         this.$ajax({
           url: '/customer/orders/get',
           method: 'get'

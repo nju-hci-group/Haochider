@@ -71,6 +71,7 @@
     },
 
     mounted(){
+      this.getUserInfo();
       this.getUserStatistics();
     },
 
@@ -110,13 +111,20 @@
         });
       },
 
-      getOrderDetail(){
-
-      },
-
-      orderAgain(){
-
-      },
+      getUserInfo(){
+        this.$ajax({
+          url: '/customer/get',
+          method: 'get',
+        }).then(res => {
+          /**
+           * response form:
+           * {
+           *    name: 'username',
+           * }
+           */
+          this.UserInfos.name = res.data.name;
+        })
+      }
     }
   }
 </script>

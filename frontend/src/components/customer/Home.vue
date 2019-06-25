@@ -2,7 +2,6 @@
   <div>
     <CustomerHeader
       :name="info.name"
-      :lvl="info.level"
     ></CustomerHeader>
     <router-view></router-view>
   </div>
@@ -18,19 +17,17 @@ export default {
       url: '/customer/info/get',
       method: 'get'
     }).then(res => {
-      if (res.data['AccessDenied']) {
+      if (res.data.data['AccessDenied']) {
         this.$router.push('/')
       } else {
-        this.info.name = res.data.name
-        this.info.level = res.data.level
+        this.info.name = res.data.data['name']
       }
     })
   },
   data: function () {
     return {
       info: {
-        name: '',
-        level: 0
+        name: ''
       }
     }
   }

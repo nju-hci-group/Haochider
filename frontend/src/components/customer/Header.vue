@@ -73,7 +73,7 @@ export default {
         if (res.data.data['AccessDenied'] === undefined) {
           this['$router'].push('/customer/home/MyOrders')
         } else {
-          this['$router'].push('/sign-in')
+          this['$router'].push('/sign-in?next-route=/customer/home/MyOrders')
         }
       })
     }

@@ -458,7 +458,16 @@ export default {
         'cartItems': items,
         'cost': this.cost
       }))
-      this['$router'].push('/customer/CheckOut')
+      this.$ajax({
+        url: '/customer/get',
+        method: 'get'
+      }).then(res => {
+        if (res.data.data['AccessDenied'] !== undefined) {
+          this['$router'].push('/sign-in?next-route=/customer/CheckOut')
+        } else {
+          this['$router'].push('/customer/CheckOut')
+        }
+      })
     }
   }
 }

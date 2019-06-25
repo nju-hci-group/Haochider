@@ -90,6 +90,7 @@
 <script>
 export default {
   name: 'SignIn',
+  props: ['nextRoute'],
   data: function () {
     return {
       userRoles: ['顾客', '商家', '管理员'],
@@ -118,8 +119,8 @@ export default {
           pwd: this.pwd
         }
       }).then(res => {
-        if (window.history.length > 1) {
-          this['$router'].go(-1)
+        if (this.nextRoute !== undefined) {
+          this['$router'].push(this.nextRoute)
         } else {
           this['$router'].push('/customer/home')
         }

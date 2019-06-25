@@ -109,6 +109,9 @@ def res_c():
 @app.route('/Yummy/api/restaurant/pictures', methods=['GET'])
 def res_p():
     photo_data=[]
+    photo_data.append(
+        {'url': "https://fuss10.elemecdn.com/8ef12630c266d008a08733effa92070bjpeg.jpeg",
+         'rid': "E15104388440383987282"})
     photo_data.append({'url':"https://fuss10.elemecdn.com/7afe0df785fe8e04f009cddf0ff372d5jpeg.jpeg",'rid': "E5545917783901406104"})
     photo_data.append(
         {'url':"https://fuss10.elemecdn.com/f88c26b6c61ae96459894e864a56eb30jpeg.jpeg", 'rid':"E14825464048244892398"})
@@ -122,6 +125,7 @@ def res_p():
         {'url':"https://fuss10.elemecdn.com/016b2de4ab16fafeac00b678d469866ajpeg.jpeg", 'rid':"E15056118707731574566"})
     photo_data.append(
         {'url':"https://fuss10.elemecdn.com/6a8432cd40b20dab7b91edf8b0d9a3f1jpeg.jpeg", 'rid':"E15056118707731574566"})
+    
     return jsonify({'data': photo_data})
 
 @app.route('/Yummy/api/restaurant', methods=['GET'])

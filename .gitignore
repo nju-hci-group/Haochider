@@ -2,4 +2,4 @@ frontend/node_nodules/**/*
 frontend/.idea/*
 frontend/*.iml
 backend/venv/**/*
-backend/src/__pycache__/**/*
+backend/src/__pycache__/*

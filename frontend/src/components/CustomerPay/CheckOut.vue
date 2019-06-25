@@ -24,7 +24,7 @@
             <div style="padding: 6px">
               <div>
                 <span style="font-size:18px; margin-left: 5%; font-family: 微软雅黑;font-weight: bold">订单详情</span>
-                <span style="font-size:12px; margin-left: 50%; font-family: 微软雅黑;">{{"\>"}}返回商家修改</span>
+                <el-link style="font-size:12px; margin-left: 50%; font-family: 微软雅黑;" @click="gotoRestaurant()">{{"\>"}}返回商家修改</el-link>
                 <el-divider></el-divider>
                 <div style="margin-left: 4%">
                   <el-table
@@ -173,7 +173,8 @@
         sumPrice:0,
         sumNumber:0,
         cartVisible: true,
-        restVisible: false
+        restVisible: false,
+        rid: '',
       }
     },
 
@@ -204,7 +205,7 @@
       },
 
       async getSum(){
-        document.getElementById("row2").style.display="none"
+        document.getElementById("row2").style.display="none";
         await this.getShoppingCart();
         this.sumPrice = 0;
         this.sumNumber = 0;
@@ -300,7 +301,12 @@
         this.isLoading = true;
         this.buttonText = '下单中';
         localStorage.setItem("price", this.sumPrice);
+        localStorage.setItem("payItems", JSON.stringify(this.shoppingCartTableData));
         this.$router.push('/customer/CheckStand');
+      },
+
+      gotoRestaurant(){
+        this.$router.push('/customer/home/shop/' + this.rid);
       },
 
       async getShoppingCart(){
@@ -317,19 +323,18 @@
             after: 31.28 // 优惠后
           }
         };*/
-        console.log(JSON.stringify(order));
-        console.log(JSON.parse(JSON.stringify(order)));
 
-        order = JSON.parse(JSON.stringify(order));
+        order = JSON.parse(order);
+        console.log(order.rid);
 
-        let id = order.id;
+        this.rid = order.rid;
         let delivery = 0;
 
         this.$ajax({
           url: '/restaurant/get',
           method: 'get',
           params: {
-            'rid': id
+            'rid': this.rid
           }
         }).then(res => {
           delivery = res.data.data['priceDelivery'];
@@ -337,7 +342,7 @@
 
         /* let order = localStorage.getItem("orderInfo");
          order = JSON.parse(order);*/
-        let cartItems = order.cartItems;
+        let cartItems = order.orders;
         console.log(cartItems);
         let table = [];
         Object.keys(cartItems).forEach(function(key){
@@ -346,12 +351,12 @@
           let num = cartItems[key].num;
           let price = num * singlePrice;
           price = price.toFixed(2);
-          table.push({food: name, number: num, price: price, singlePrice: singlePrice});
+          table.push({fid: key, food: name, number: num, price: price, singlePrice: singlePrice});
         });
-        console.log(table);
         this.shoppingCartTableData = table;
-        this.shoppingCartTableData.push({food: "配送费", number: 1, price: delivery, singlePrice: 2});
-        this.shoppingCartTableData.push({food: "优惠", number: 0, price: 0, singlePrice: 2});
+        this.shoppingCartTableData.push({fid: "", food: "配送费", number: 1, price: delivery, singlePrice: 2});
+        this.shoppingCartTableData.push({fid: "", food: "优惠", number: 0, price: 0, singlePrice: 2});
+        console.log(this.shoppingCartTableData);
       }
     }
   }

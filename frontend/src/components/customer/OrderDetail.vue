@@ -25,93 +25,93 @@
       <div>
         <div align="left" style="margin-left: 2%;">
           <el-row>
-            <el-card :body-style="{ padding: '3px'}" shadow="never" style="width: 100%; height: 500px">
-              <el-row>
-                <el-col :span="12">
-                  <div :body-style="{ padding: '3px'}" style="width: 100%; height: 500px;padding-right: 5%">
-                    <div style="padding: 6px">
-                      <div>
-                        <span style="font-size:18px; margin-left: 5%; font-family: 微软雅黑,serif;font-weight: bold">订单详情</span>
-                        <el-divider></el-divider>
-                        <el-row>
-                          <el-col :span="4" style="margin-left: 5%">
-                            <img :src="RestaurantInfos.avatar"  width="50" height="50"  style="border-radius: 50%; cursor:pointer;margin-left: 5%" @click="gotoRestaurant() " />
-                          </el-col>
-                          <el-col :span="12">
-                            <div style="font-size: large; padding-top: 7%">{{RestaurantInfos.name}}</div>
-                          </el-col>
-                        </el-row>
-                        <div style="margin-left: 4%">
-                          <el-table
-                            :data="shoppingCartTableData"
-                            style="width: 100%"
-                          >
-                            <el-table-column
-                              prop="food"
-                              label="商品"
+            <el-card :body-style="{ padding: '3px'}" shadow="never" style="width: 100%; height: 600px">
+                <el-row>
+                  <el-col :span="12">
+                    <div :body-style="{ padding: '3px'}" style="width: 100%; height: 500px;padding-right: 5%">
+                      <div style="padding: 6px">
+                        <div>
+                          <span style="font-size:18px; margin-left: 5%; font-family: 微软雅黑,serif;font-weight: bold">订单详情</span>
+                          <el-divider></el-divider>
+                          <el-row>
+                            <el-col :span="4" style="margin-left: 5%">
+                              <img :src="RestaurantInfos.avatar"  width="50" height="50"  style="border-radius: 50%; cursor:pointer;margin-left: 5%" @click="gotoRestaurant() " />
+                            </el-col>
+                            <el-col :span="12">
+                              <div style="font-size: large; padding-top: 7%">{{RestaurantInfos.name}}</div>
+                            </el-col>
+                          </el-row>
+                          <div style="margin-left: 4%">
+                            <el-table
+                              :data="shoppingCartTableData"
+                              style="width: 100%"
                             >
-                            </el-table-column>
-                            <el-table-column
-                              prop="number"
-                              label="份数"
-                              width="150"
-                              align="center"
-                            >
-                            </el-table-column>
-                            <el-table-column
-                              prop="price"
-                              label="小计(元)"
-                              align="right">
-                            </el-table-column>
-                          </el-table>
+                              <el-table-column
+                                prop="food"
+                                label="商品"
+                              >
+                              </el-table-column>
+                              <el-table-column
+                                prop="number"
+                                label="份数"
+                                width="150"
+                                align="center"
+                              >
+                              </el-table-column>
+                              <el-table-column
+                                prop="price"
+                                label="小计(元)"
+                                align="right">
+                              </el-table-column>
+                            </el-table>
+                          </div>
+                          <el-row>
+                            <span style="font-size: 40px; color: red; float: right">￥{{this.sumPrice}}</span>
+                          </el-row>
+                          <el-row>
+                            <span style="float: right">共{{this.sumNumber}}份商品</span>
+                          </el-row>
                         </div>
-                        <el-row>
-                          <span style="font-size: 40px; color: red; float: right">￥{{this.sumPrice}}</span>
-                        </el-row>
-                        <el-row>
-                          <span style="float: right">共{{this.sumNumber}}份商品</span>
-                        </el-row>
-                      </div>
-                      <div style="position: relative;top: 30px;">
+                        <div style="position: relative;top: 30px;">
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </el-col>
-                <el-col :span="12">
-                  <div :body-style="{ padding: '3px'}" style="width: 100%; height: 500px;padding-right: 5%">
-                    <div style="padding: 6px">
-                      <div>
+                  </el-col>
+                  <el-col :span="12">
+                    <div :body-style="{ padding: '3px'}" style="width: 100%; height: 500px;padding-right: 5%">
+                      <div style="padding: 6px">
+                        <div>
                         <span style="font-size:18px; margin-left: 5%; font-family: 微软雅黑,serif;font-weight: bold;">
                           配送信息
                         </span>
-                        <el-form ref="form" :model="orderForm" label-width="80px" style="margin-left: 5%; margin-top: 2%">
-                          <el-form-item label="订单状态:">
-                            <span>{{orderForm.state}}</span>
-                          </el-form-item>
-                          <el-form-item label="联系人:">
-                            <span>{{orderForm.username}}</span>
-                          </el-form-item>
-                          <el-form-item label="联系电话:">
-                            <span>{{orderForm.tel}}</span>
-                          </el-form-item>
-                          <el-form-item label="收货地址:">
-                            <span>{{orderForm.address}}</span>
-                          </el-form-item>
-                          <el-form-item label="送达时间:">
-                            <span>{{orderForm.arriveTime}}</span>
-                          </el-form-item>
-                          <el-form-item label="订单备注:">
-                            <span>{{orderForm.note}}</span>
-                          </el-form-item>
-                        </el-form>
-                      </div>
-                      <div style="position: relative;top: 30px;">
+                          <el-form ref="form" :model="orderForm" label-width="80px" style="margin-left: 5%; margin-top: 2%">
+                            <el-form-item label="订单状态:">
+                              <span>{{orderForm.state}}</span>
+                            </el-form-item>
+                            <el-form-item label="联系人:">
+                              <span>{{orderForm.username}}</span>
+                            </el-form-item>
+                            <el-form-item label="联系电话:">
+                              <span>{{orderForm.tel}}</span>
+                            </el-form-item>
+                            <el-form-item label="收货地址:">
+                              <span>{{orderForm.address}}</span>
+                            </el-form-item>
+                            <el-form-item label="送达时间:">
+                              <span>{{orderForm.arriveTime}}</span>
+                            </el-form-item>
+                            <el-form-item label="订单备注:">
+                              <span>{{orderForm.note}}</span>
+                            </el-form-item>
+                          </el-form>
+                        </div>
+                        <div style="position: relative;top: 30px;">
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </el-col>
-              </el-row>
-            </el-card>
+                  </el-col>
+                </el-row>
+              </el-card>
           </el-row>
         </div>
       </div>
@@ -149,24 +149,19 @@
           arriveTime:'尽快送出',
           note: '无备注'
         },
-        shoppingCartTableData:[
-          {food: "照烧鸡排饭", number: 1, price: "￥43.99", singlePrice: 43.99},
-          {food: "章鱼小丸子", number: 1, price: "￥12.00", singlePrice: 12.00},
-          {food: "配送费", number: 1, price: "￥2.00", singlePrice: 2.00},
-          {food: "餐盒", number: 1, price: "￥2.00", singlePrice: 2.00},
-        ],
+        shoppingCartTableData:[],
         sumPrice:0,
         sumNumber:0,
         RestaurantInfos:{
-          rid: '01',
-          avatar: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
-          name: '水林间（新街口店）',
+          rid: '',
+          avatar: '',
+          name: '',
         }
       }
     },
 
     created(){
-      this.getSum();
+      this.getOrderDetail();
     },
 
     methods:{
@@ -176,20 +171,37 @@
 
       getOrderDetail(){
         let order = localStorage.getItem("order");
-
-      },
-
-      getSum(){
-        console.log(localStorage.getItem("oid"));
-        this.sumPrice = 0;
-        this.sumNumber = 0;
-        for (let i = 0; i < this.shoppingCartTableData.length; i++){
-          this.sumPrice += this.shoppingCartTableData[i].number * this.shoppingCartTableData[i].singlePrice;
+        order = JSON.parse(order);
+        console.log(order);
+        let foods = order.orders;
+        let price = 0;
+        for (let i = 0; i < foods.length; i++){
+          this.shoppingCartTableData.push({food: foods[i].name, number: foods[i].num, price: "￥" + (foods[i].price * foods[i].num).toFixed(2), singlePrice: foods[i].price});
+          price += (foods[i].price * foods[i].num);
         }
-        for (let i = 0; i < this.shoppingCartTableData.length; i++){
-          if (this.shoppingCartTableData[i].food !== "配送费" &&  this.shoppingCartTableData[i].food !== "餐盒")
-            this.sumNumber += this.shoppingCartTableData[i].number;
-        }
+        this.sumNumber = foods.length;
+        this.sumPrice = order.price;
+        this.RestaurantInfos.avatar = order.avatar;
+        this.RestaurantInfos.name = order.rname;
+        this.RestaurantInfos.rid = order.rid;
+
+        let delivery = 0;
+
+        this.$ajax({
+          url: '/restaurant/get',
+          method: 'get',
+          params: {
+            'rid': this.RestaurantInfos.rid
+          }
+        }).then(res => {
+          delivery = res.data.data['priceDelivery'];
+        });
+
+        this.shoppingCartTableData.push({food: "配送费", number: "", price: "￥" + delivery, singlePrice: 0});
+
+        price = price + delivery;
+        let discount = price - this.sumPrice;
+        this.shoppingCartTableData.push({food: "优惠", number: "", price: "-￥" + discount.toFixed(0), singlePrice: 0});
       },
 
       handleSelect(key, keyPath) {

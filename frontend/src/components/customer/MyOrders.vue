@@ -39,7 +39,7 @@
           <template slot-scope="scope">
             <el-row>
               <el-col :span="4">
-                <img :src="scope.row.image"  width="50" height="50"  style="border-radius: 50%; cursor:pointer" @click="gotoRestaurant(scope.$index, scope.row) " />
+                <img :src="scope.row.avatar"  width="50" height="50"  style="border-radius: 50%; cursor:pointer" @click="gotoRestaurant(scope.$index, scope.row) " />
               </el-col>
               <el-col :span="12">
                 <div style="padding-top: 7%; ">{{scope.row.content}}</div>
@@ -89,132 +89,15 @@
       return {
         opened : false,
         tabPosition:'left',
-        orderData: [
-          {
-            oid: 1,
-            rid: 1,
-            time: '2019-06-06 10:43',
-            content: '\t\n' +
-              '巨无霸单人套餐1份 1 个菜品',
-            price: 24.9,
-            state: '订单已完成',
-            image : 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
-        },
-          {
-            oid: 2,
-            rid: 1,
-            time: '2019-06-05 10:43',
-            content:'\t\n' +
-              '爆浆蛋包饭+雪花鸡柳1份 1 个菜品',
-            price: 18.9,
-            state: '订单已完成',
-            image : 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
-
-          },
-          {
-            oid: 3,
-            rid: 1,
-            time: '2019-06-05 10:43',
-            content:'\t\n' +
-              '爆浆蛋包饭+雪花鸡柳1份 1 个菜品',
-            price: 18.9,
-            state: '订单已完成',
-            image : 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
-
-          },
-          {
-            oid: 4,
-            rid: 1,
-            time: '2019-06-05 10:43',
-            content:'\t\n' +
-              '爆浆蛋包饭+雪花鸡柳1份 1 个菜品',
-            price: 18.9,
-            state: '订单已完成',
-            image : 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
-
-          },
-          {
-            oid: 5,
-            rid: 1,
-            time: '2019-06-05 10:43',
-            content:'\t\n' +
-              '爆浆蛋包饭+雪花鸡柳1份 1 个菜品',
-            price: 18.9,
-            state: '订单已完成',
-            image : 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
-
-          },
-          {
-            oid: 6,
-            rid: 1,
-            time: '2019-06-05 10:43',
-            content:'\t\n' +
-              '爆浆蛋包饭+雪花鸡柳1份 1 个菜品',
-            price: 18.9,
-            state: '订单已完成',
-            image : 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
-
-          },
-          {
-            oid: 7,
-            rid: 1,
-            time: '2019-06-05 10:43',
-            content:'\t\n' +
-              '爆浆蛋包饭+雪花鸡柳1份 1 个菜品',
-            price: 18.9,
-            state: '订单已完成',
-            image : 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
-
-          },
-          {
-            oid: 8,
-            rid: 1,
-            time: '2019-06-05 10:43',
-            content:'\t\n' +
-              '爆浆蛋包饭+雪花鸡柳1份 1 个菜品',
-            price: 18.9,
-            state: '订单已完成',
-            image : 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
-
-          },
-          {
-            oid: 9,
-            rid: 1,
-            time: '2019-06-05 10:43',
-            content:'\t\n' +
-              '爆浆蛋包饭+雪花鸡柳1份 1 个菜品',
-            price: 18.9,
-            state: '订单已完成',
-            image : 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
-
-          },
-          {
-            oid: 10,
-            rid: 1,
-            time: '2019-06-05 10:43',
-            content:'\t\n' +
-              '爆浆蛋包饭+雪花鸡柳1份 1 个菜品',
-            price: 18.9,
-            state: '订单已完成',
-            image : 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
-
-          },
-          {
-            oid: 11,
-            rid: 1,
-            time: '2019-06-05 10:43',
-            content:'\t\n' +
-              '爆浆蛋包饭+雪花鸡柳1份 1 个菜品',
-            price: 18.9,
-            state: '订单已完成',
-            image : 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
-
-          },
-        ],
+        orderData: [],
         total: 11,
         pagesize:10,
         currentPage:1
       }
+    },
+
+    mounted(){
+      this.getOrders();
     },
 
     methods:{
@@ -241,21 +124,25 @@
       //跳转至订单详情
       getOrderDetail(index, row){
         console.log(row);
-        localStorage.setItem("order", row);
+        localStorage.setItem("order", JSON.stringify(row));
         this.$router.push('/customer/home/OrderDetail');
       },
 
-      orderAgain(){
-
+      //跳转至再来一单支付界面
+      orderAgain(index, row){
+        localStorage.setItem("orderInfo", JSON.stringify(row));
+        this.$router.push('/customer/CheckOut');
       },
 
-      loadInfo: function () {
+      getOrders() {
         /**
          * response form: [
          * {
          *    id: 1
          *    time: '2018-02-14 17:45:00'
-         *    avatar: 'XXXX'
+         *    avatar: 'XXXX',
+         *    rid,
+         *    rname,
          *    price: 92.93,
          *    orders:{
          *        'xxx': {name: 'abc', price: 20.233, num: 1}, // key是菜品编号
@@ -263,19 +150,72 @@
                   'xxxxx': {name: 'cbc', price: 40.23, num: 1},
          *    },
          *    state: '订单已完成|订单已取消|等',
+         *    contents: '',
          * }
          * ]
          */
-        this.$ajax({
+/*        this.$ajax({
           url: '/customer/orders/get',
           method: 'get'
         }).then(res => {
           if (res.data['AccessDenied']) {
             this.$router.push('/')
           } else {
-            this.orderData = res.data;
+            this.orderData = res.data.data;
           }
-        })
+        })*/
+
+        this.orderData = [
+          {
+            id: 1,
+            rid:'12345',
+            rname: '水林间（南京紫峰店）',
+            time: '2019-06-06 10:43',
+            content: '',
+            orders :[{name: 'abc', price: 20.233, num: 1}, // key是菜品编号，value是数量
+              {name: 'bbc', price: 30.23, num: 1},
+              {name: 'cbc', price: 40.23, num: 1},],
+            price: 70.69,
+            state: '订单已完成',
+            avatar : 'e/5d/4a731a90594a4af544c0c25941171jpeg'
+          },
+          {
+            id: 2,
+            rid:'12345',
+            rname: '水林间（南京紫峰店）',
+            time: '2019-06-05 10:43',
+            content:'',
+            orders :[{name: 'x', price: 20.233, num: 1}, // key是菜品编号，value是数量
+              {name: 'y', price: 30.23, num: 1},
+              {name: 'z', price: 40.23, num: 1},],
+            price: 70.69,
+            state: '订单已完成',
+            avatar : 'e/5d/4a731a90594a4af544c0c25941171jpeg'
+
+          },];
+
+        for (let i = 0; i < this.orderData.length; i++){
+          let foods = this.orderData[i].orders;
+          let name = "";
+          let num = 0;
+          Object.keys(foods).some(function(key){
+            name = foods[key].name;
+            num = foods[key].num;
+            if (name !== ""){
+              return true;
+            }
+          });
+
+          this.orderData[i].content = name + num + "份等" + foods.length + "个菜品";
+          if (this.orderData[i].avatar.substring(this.orderData[i].avatar.length - 3) === 'png'){
+            this.orderData[i].avatar = "https://fuss10.elemecdn.com/" + this.orderData[i].avatar + '.png';
+          }else {
+            this.orderData[i].avatar = "https://fuss10.elemecdn.com/" + this.orderData[i].avatar + '.jpeg';
+          }
+          console.log(this.orderData[i].content);
+        }
+
+        this.total = this.orderData.length;
       }
     }
   }

@@ -458,7 +458,7 @@ export default {
         'cartItems': items,
         'cost': this.cost
       }))
-      this.$router.push('/customer/CheckOut')
+      this['$router'].push('/customer/CheckOut')
     }
   }
 }

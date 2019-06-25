@@ -195,13 +195,12 @@
           }
         }).then(res => {
           delivery = res.data.data['priceDelivery'];
+          this.shoppingCartTableData.push({food: "配送费", number: "", price: "￥" + delivery, singlePrice: 0});
+
+          price = price + delivery;
+          let discount = price - this.sumPrice;
+          this.shoppingCartTableData.push({food: "优惠", number: "", price: "-￥" + discount.toFixed(0), singlePrice: 0});
         });
-
-        this.shoppingCartTableData.push({food: "配送费", number: "", price: "￥" + delivery, singlePrice: 0});
-
-        price = price + delivery;
-        let discount = price - this.sumPrice;
-        this.shoppingCartTableData.push({food: "优惠", number: "", price: "-￥" + discount.toFixed(0), singlePrice: 0});
       },
 
       handleSelect(key, keyPath) {

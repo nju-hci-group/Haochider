@@ -458,7 +458,16 @@ export default {
         'cartItems': items,
         'cost': this.cost
       }))
-      this['$router'].push('/customer/CheckOut')
+      this.$ajax({
+        url: '/customer/get',
+        method: 'get'
+      }).then(res => {
+        if (res.data.data['AccessDenied'] !== undefined) {
+          this['$router'].push('/sign-in?next-route=/customer/CheckOut')
+        } else {
+          this['$router'].push('/customer/CheckOut')
+        }
+      })
     }
   }
 }
@@ -480,7 +489,7 @@ export default {
     bottom: 0;
   }
   .type-list {
-    width: 150px;
+    width: 100%;
     /*background-color: #ede8ef;*/
   }
   .type-selected {
@@ -490,7 +499,7 @@ export default {
     position: fixed;
     bottom: 10px;
     right: 10px;
-    width: 370px;
+    width: 28%;
   }
   .cart-item-list {
     border-top: 2px solid #2070ef;
@@ -505,10 +514,10 @@ export default {
     border-radius: 0 0 0 0;
   }
   .cart-btn-left {
-    width: 250px;
+    width: 65%;
   }
   .cart-btn-right {
-    width: 120px;
+    width: 35%;
   }
   .other-info {
     text-align: start;

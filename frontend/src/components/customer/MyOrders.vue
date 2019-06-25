@@ -154,17 +154,42 @@
          * }
          * ]
          */
-/*        this.$ajax({
+        this.$ajax({
           url: '/customer/orders/get',
           method: 'get'
         }).then(res => {
+          console.log(res.data);
           if (res.data['AccessDenied']) {
             this.$router.push('/')
           } else {
             this.orderData = res.data.data;
-          }
-        })*/
+            for (let i = 0; i < this.orderData.length; i++){
+              let foods = this.orderData[i].orders;
+              let name = "";
+              let num = 0;
+              Object.keys(foods).some(function(key){
+                name = foods[key].name;
+                num = foods[key].num;
+                if (name !== ""){
+                  return true;
+                }
+              });
 
+              this.orderData[i].content = name + num + "份等" + foods.length + "个菜品";
+              if (this.orderData[i].avatar.substring(this.orderData[i].avatar.length - 3) === 'png'){
+                this.orderData[i].avatar = "https://fuss10.elemecdn.com/" + this.orderData[i].avatar + '.png';
+              }else {
+                this.orderData[i].avatar = "https://fuss10.elemecdn.com/" + this.orderData[i].avatar + '.jpeg';
+              }
+              console.log(this.orderData[i].content);
+              console.log(this.orderData[i].avatar)
+            }
+
+            this.total = this.orderData.length;
+          }
+        });
+
+/*
         this.orderData = [
           {
             id: 1,
@@ -193,29 +218,7 @@
             avatar : 'e/5d/4a731a90594a4af544c0c25941171jpeg'
 
           },];
-
-        for (let i = 0; i < this.orderData.length; i++){
-          let foods = this.orderData[i].orders;
-          let name = "";
-          let num = 0;
-          Object.keys(foods).some(function(key){
-            name = foods[key].name;
-            num = foods[key].num;
-            if (name !== ""){
-              return true;
-            }
-          });
-
-          this.orderData[i].content = name + num + "份等" + foods.length + "个菜品";
-          if (this.orderData[i].avatar.substring(this.orderData[i].avatar.length - 3) === 'png'){
-            this.orderData[i].avatar = "https://fuss10.elemecdn.com/" + this.orderData[i].avatar + '.png';
-          }else {
-            this.orderData[i].avatar = "https://fuss10.elemecdn.com/" + this.orderData[i].avatar + '.jpeg';
-          }
-          console.log(this.orderData[i].content);
-        }
-
-        this.total = this.orderData.length;
+*/
       }
     }
   }

@@ -101,7 +101,7 @@
       }
     },
 
-    created(){
+    mounted(){
       this.getOrder();
     },
 
@@ -133,10 +133,10 @@
 
       getOrder() {
         this.sumPrice = localStorage.getItem("price");
-       /* let order = localStorage.getItem("orderInfo");
-        order = JSON.parse(JSON.stringify(order));
+        let order = localStorage.getItem("orderInfo");
+        order = JSON.parse(order);
         this.rid = order.rid;
-
+        console.log(this.rid);
 
         this.$ajax({
           url: '/restaurant/name/get',
@@ -146,26 +146,26 @@
           }
         }).then(res => {
           this.restaurantName = res.data.data['name'];
-        });*/
+          this.username = "蔡徐坤";
+          this.tel = "15189585960";
+          this.address = "江苏省南京市鼓楼区南京大学";
+          let orderItems = localStorage.getItem("payItems");
+          orderItems = JSON.parse(orderItems);
 
-       this.restaurantName = "水林间（南京紫峰店）";
+          let orders = [];
 
-        this.username = "蔡徐坤";
-        this.tel = "15189585960";
-        this.address = "江苏省南京市鼓楼区南京大学";
-        let orderItems = localStorage.getItem("payItems");
-        orderItems = JSON.parse(orderItems);
-
-        let orders = [];
-
-        Object.keys(orderItems).forEach(function (key) {
-          let name = orderItems[key].food;
-          let num = orderItems[key].number;
-          if (name !== "配送费" && name !== "优惠"){
-            orders.push(name + "  x" + num + '\n');
-          }
+          Object.keys(orderItems).forEach(function (key) {
+            let name = orderItems[key].food;
+            let num = orderItems[key].number;
+            if (name !== "配送费" && name !== "优惠"){
+              orders.push(name + "  x" + num + '\n');
+            }
+          });
+          this.foods = orders;
         });
-        this.foods = orders;
+
+    //   this.restaurantName = "水林间（南京紫峰店）";
+
       }
     }
   }

@@ -9,7 +9,7 @@
           <span style="color: white; font-size: 26px" >| 订单信息</span>
         </el-col>
         <el-col :span="16" style="margin-top: 1%;"  >
-          <el-steps :space="200" :active="2" align-center="" style="float: right;width: 60%;" >
+          <el-steps :space="200" :active="2" align-center="" style="float: right;width: 60%; " >
             <el-step title="选择商品" ></el-step>
             <el-step title="确认订单信息"></el-step>
             <el-step title="成功提交订单"></el-step>
@@ -175,12 +175,13 @@
         cartVisible: true,
         restVisible: false,
         rid: '',
+        delivery: 0,
       }
     },
 
     mounted(){
       this.getDefaultAddress();
-      this.getSum();
+      this.getShoppingCart();
     },
 
     methods:{
@@ -204,39 +205,7 @@
         this.value = this.addresses[0].address + this.addresses[0].tel;
       },
 
-      async getSum(){
-        document.getElementById("row2").style.display="none";
-        await this.getShoppingCart();
-        this.sumPrice = 0;
-        this.sumNumber = 0;
-        let tempSum = 0;
-        for (let i = 0; i < this.shoppingCartTableData.length; i++){
-          this.sumPrice += this.shoppingCartTableData[i].number * this.shoppingCartTableData[i].singlePrice;
-        }
-        tempSum = this.sumPrice;
-        for (let i = 0; i < this.shoppingCartTableData.length; i++){
-          if (this.shoppingCartTableData[i].food !== "配送费" &&  this.shoppingCartTableData[i].food !== "优惠")
-            this.sumNumber += this.shoppingCartTableData[i].number;
-        }
-        this.sumPrice = this.sumPrice.toFixed(2);
-
-        if (this.sumPrice >= 35 && this.sumPrice < 40){
-          this.sumPrice -= 10;
-          //  this.shoppingCartTableData.push({food: "优惠", number: 1, price: -10, singlePrice: 2});
-        }else if (this.sumPrice >= 40 && this.sumPrice < 50){
-          this.sumPrice -= 15;
-          //  this.shoppingCartTableData.push({food: "优惠", number: 1, price: -15, singlePrice: 2})
-        }else if (this.sumPrice >= 50){
-          this.sumPrice -= 20;
-          //  this.shoppingCartTableData.push({food: "优惠", number: 1, price: -20, singlePrice: 2})
-        }
-
-        this.shoppingCartTableData[this.shoppingCartTableData.length - 1].price = (tempSum - this.sumPrice).toFixed(0);
-
-      },
-
       changeNumber(index, row){
-        let tempData = [];
         if (row.number === 0){
           /*for (let i = 0; i < this.shoppingCartTableData.length; i++){
             if (i !== index){
@@ -248,6 +217,7 @@
           this.shoppingCartTableData[0].number = this.shoppingCartTableData[0].number + 1;*/
           this.shoppingCartTableData.splice(index, 1);
         }
+        this.shoppingCartTableData[index].price = this.shoppingCartTableData[index].singlePrice * this.shoppingCartTableData[index].number;
         this.sumPrice = 0;
         this.sumNumber = 0;
         let tempSum = 0;
@@ -309,7 +279,7 @@
         this.$router.push('/customer/home/shop/' + this.rid);
       },
 
-      async getShoppingCart(){
+      getShoppingCart(){
         let order = localStorage.getItem("orderInfo");
         /*let order = {
           rid: 'xxxxxxxxxx',
@@ -326,39 +296,74 @@
 
         order = JSON.parse(order);
         console.log(order.rid);
-
+        console.log(order.cartItems);
         this.rid = order.rid;
-        let delivery = 0;
 
         this.$ajax({
           url: '/restaurant/get',
           method: 'get',
           params: {
             'rid': this.rid
-          }
+          },
         }).then(res => {
-          delivery = res.data.data['priceDelivery'];
-        });
+          this.delivery = res.data.data['priceDelivery'];
+          console.log(this.delivery)
+          let cartItems = order.cartItems;
+          console.log(cartItems);
+          let table = [];
+          Object.keys(cartItems).forEach(function(key){
+            let name = cartItems[key].name;
+            let singlePrice = cartItems[key].price;
+            let num = cartItems[key].num;
+            let price = num * singlePrice;
+            price = price.toFixed(2);
+            table.push({fid: key, food: name, number: num, price: price, singlePrice: singlePrice});
+          });
+          this.shoppingCartTableData = table;
+          this.shoppingCartTableData.push({fid: "", food: "配送费", number: 1, price: this.delivery, singlePrice: this.delivery});
+          this.shoppingCartTableData.push({fid: "", food: "优惠", number: 0, price: 0, singlePrice: 2});
+          console.log(this.shoppingCartTableData);
 
+
+          document.getElementById("row2").style.display="none";
+          //     await this.getShoppingCart();
+
+          console.log(this.shoppingCartTableData);
+          this.sumPrice = 0;
+          this.sumNumber = 0;
+          let tempSum;
+          for (let i = 0; i < this.shoppingCartTableData.length; i++){
+            this.sumPrice += this.shoppingCartTableData[i].number * this.shoppingCartTableData[i].singlePrice;
+          }
+          tempSum = this.sumPrice;
+          for (let i = 0; i < this.shoppingCartTableData.length; i++){
+            if (this.shoppingCartTableData[i].food !== "配送费" &&  this.shoppingCartTableData[i].food !== "优惠")
+              this.sumNumber += this.shoppingCartTableData[i].number;
+          }
+          this.sumPrice = this.sumPrice.toFixed(2);
+
+          if (this.sumPrice >= 35 && this.sumPrice < 40){
+            this.sumPrice -= 10;
+            //  this.shoppingCartTableData.push({food: "优惠", number: 1, price: -10, singlePrice: 2});
+          }else if (this.sumPrice >= 40 && this.sumPrice < 50){
+            this.sumPrice -= 15;
+            //  this.shoppingCartTableData.push({food: "优惠", number: 1, price: -15, singlePrice: 2})
+          }else if (this.sumPrice >= 50){
+            this.sumPrice -= 20;
+            //  this.shoppingCartTableData.push({food: "优惠", number: 1, price: -20, singlePrice: 2})
+          }
+
+          this.shoppingCartTableData[this.shoppingCartTableData.length - 1].price = (tempSum - this.sumPrice).toFixed(0);
+
+        });
         /* let order = localStorage.getItem("orderInfo");
          order = JSON.parse(order);*/
-        let cartItems = order.orders;
-        console.log(cartItems);
-        let table = [];
-        Object.keys(cartItems).forEach(function(key){
-          let name = cartItems[key].name;
-          let singlePrice = cartItems[key].price;
-          let num = cartItems[key].num;
-          let price = num * singlePrice;
-          price = price.toFixed(2);
-          table.push({fid: key, food: name, number: num, price: price, singlePrice: singlePrice});
-        });
-        this.shoppingCartTableData = table;
-        this.shoppingCartTableData.push({fid: "", food: "配送费", number: 1, price: delivery, singlePrice: 2});
-        this.shoppingCartTableData.push({fid: "", food: "优惠", number: 0, price: 0, singlePrice: 2});
-        console.log(this.shoppingCartTableData);
-      }
-    }
+
+
+      },
+
+    },
+
   }
 </script>
 

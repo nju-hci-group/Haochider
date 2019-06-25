@@ -125,7 +125,7 @@ def res_p():
         {'url':"https://fuss10.elemecdn.com/016b2de4ab16fafeac00b678d469866ajpeg.jpeg", 'rid':"E15056118707731574566"})
     photo_data.append(
         {'url':"https://fuss10.elemecdn.com/6a8432cd40b20dab7b91edf8b0d9a3f1jpeg.jpeg", 'rid':"E15056118707731574566"})
-    
+
     return jsonify({'data': photo_data})
 
 @app.route('/Yummy/api/restaurant', methods=['GET'])
@@ -137,11 +137,16 @@ def res_show():
     limit1 = (page - 1) * pageSize
     limit2 = pageSize
     resa = NewRes.select().limit(limit2).offset(limit1)
+
     for e in resa:
+        if e.photo[-2]=='e':
+            photo="https://fuss10.elemecdn.com/"+e.photo+".jpeg"
+        else:
+            photo = "https://fuss10.elemecdn.com/" + e.photo + ".png"
         res_data.append({"id":e.rid,"name":e.name,"description":e.des,"address":e.area,"type":random.choice("123456789"),"image":e.photo})
     return jsonify({'data': res_data})
 if __name__ == '__main__':
     # http_server = WSGIServer(('',5000),app)
     # http_server.serve_forever()
     app.config["JSON_AS_ASCII"]=False
-    app.run()
+    # app.run()

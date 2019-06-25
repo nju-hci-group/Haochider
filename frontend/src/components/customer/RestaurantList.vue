@@ -5,7 +5,7 @@
         <v-layout row>
           <v-flex xs4>
             <v-card outlined fill-height>
-              <v-img src="https://picsum.photos/id/76/1600/900" contain>
+              <v-img :src="picList[0]" contain>
               </v-img>
             </v-card>
           </v-flex>
@@ -13,7 +13,7 @@
             <v-layout v-for="m in 2" :key="m" row wrap>
               <v-flex v-for="n in 4" :key="n" d-flex xs3>
                 <v-card outlined>
-                  <v-img src="https://picsum.photos/id/76/1600/900">
+                  <v-img :src="getPicture(m, n)" contain>
                   </v-img>
                 </v-card>
               </v-flex>
@@ -45,7 +45,7 @@
         <v-toolbar dense>
           <v-toolbar-title>商家分类  </v-toolbar-title>
           <template v-for="(item, index) in categories">
-            <v-btn :color="item === category ? 'primary' : 'normal'" small :key="index" @click="selectCategory(item)">{{item}}</v-btn>
+            <v-btn :color="index === category ? 'primary' : 'normal'" small :key="index" @click="selectCategory(key)">{{item}}</v-btn>
           </template>
         </v-toolbar>
       </v-container>
@@ -88,7 +88,9 @@ export default {
   },
   name: 'RestaurantList',
   beforeMount: function () {
-    this.loadRestaurantMock()
+    this.loadRestaurant()
+    this.loadCategories()
+    this.loadPicList()
     this.showList = this.list.concat()
   },
   mounted () {
@@ -96,9 +98,11 @@ export default {
   },
   data: function () {
     return {
+      picList: [],
       categories: ['全部商家', '快餐便当', '小吃夜宵', '饮品甜品'],
-      category: '全部商家',
+      category: 0,
       morePage: true,
+      page: 0,
       pageSize: 8,
       list: [],
       showList: null,
@@ -111,6 +115,58 @@ export default {
     }
   },
   methods: {
+    loadRestaurant: function () {
+      /**
+       * request param: {
+       *     page: 1
+       * }
+       * response form: [{
+       *     id: 1,
+       *     name: '测试餐厅',
+       *     description: 'dfhhyj',
+       *     address: '南京大学第i食堂',
+       *     type: 1,
+       *     image: 'https://source.unsplash.com/random/120x120'
+       * }]
+       */
+      this.$ajax.get('/restaurant', {
+        params: {
+          page: this.page + 1
+        }
+      }).then(res => {
+        if (res.data.code === 0) {
+          console.log('请求出错')
+        } else {
+          if (res.data.length > 0) {
+            this.list.push(...res.data.data)
+            this.page++
+          } else {
+            this.morePage = false
+          }
+        }
+      })
+    },
+    loadCategories: function () {
+      /**
+       * response form: ['快餐便当', '小吃夜宵', '饮品甜品']
+       */
+      this.$ajax.get('/restaurant/categories').then(res => {
+        if (res.data.code !== 0) {
+          this.category = res.data.data
+          this.category.splice(0, 0, '全部商家')
+        }
+      })
+    },
+    loadPicList: function () {
+      /**
+       * response form: ['image-link'] 每一项是图片链接，总共九项
+       */
+      this.$ajax.get('/restaurant/pictures').then(res => {
+        if (res.data.code !== 0) {
+          this.picList = res.data.data
+        }
+      })
+    },
     loadRestaurantMock: function () {
       for (let i = 0; i < 8; i++) {
         let r = Math.random()
@@ -127,9 +183,12 @@ export default {
         })
       }
     },
+    getPicture: function (m, n) {
+      return this.picList[(m - 1) * 4 + n]
+    },
     selectCategory: function (key) {
       this.category = key
-      if (key !== this.categories[0]) {
+      if (key !== 0) {
         this.showList = this.list.filter(function isBigEnough (element, index, array) {
           return (element.type === key)
         })
@@ -150,18 +209,18 @@ export default {
       document.body.scrollTop = 0
       document.documentElement.scrollTop = 0
     },
-    selectAddress (address) {
+    selectAddress: function (address) {
       this.province = address.province
       this.city = address.city
       this.area = address.area
     },
-    scroll (list) {
+    scroll: function () {
       let isLoading = false
       window.onscroll = () => {
         // 距离底部20px时加载一次
         let bottomOfWindow = document.documentElement.offsetHeight - document.documentElement.scrollTop - window.innerHeight <= 10
-        if (bottomOfWindow && isLoading === false) {
-          this.loadRestaurantMock()
+        if (bottomOfWindow && isLoading === false && this.morePage) {
+          this.loadRestaurant()
           this.selectCategory(this.category)
           this.line = Math.floor(this.showList.length / 4) + 1
           isLoading = false

@@ -6,6 +6,10 @@ from yummyModel import *
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
+login=0
+
+
+
 @app.route('/hello')
 def hello_world():
     return "hello"
@@ -13,12 +17,7 @@ def hello_world():
 def oredr_get():
     orders=[]
     orderLists=[]
-    email = ""
-    if 'email' in session:
-       email = session['email']
-    else:
-        return jsonify({"res": "PleasLogin"})
-
+    email = "161250192@smail.nju.edu.cn"
     order_s = NewOrder.select().where(NewOrder.uid == email)
     for e in order_s:
         s = NewOrderlist.select().where(NewOrderlist.oid == e.oid)
@@ -43,12 +42,16 @@ def oredr_get():
 
 @app.route('/Yummy/api/customer/get',methods=['GET'])
 def customer():
-    return jsonify({"data":{"name":"蔡徐坤"}})
+    if login==0:
+        return jsonify({"data":{"AccessDenied":"1"}})
+    else:
+        return jsonify({"data":{"name":"蔡徐坤"}})
 
 @app.route('/Yummy/api/customer/sign-in', methods=['POST'])
 def login():
+    global login
+    login+=1
     return jsonify({"result": 0})
-    return jsonify({"result":"success"})
 
 @app.route('/Yummy/api/restaurant/order/post', methods=['POST'])
 def orderpost():

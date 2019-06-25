@@ -9,7 +9,7 @@ from yummyModel import *
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
-login=0
+logins=0
 
 
 
@@ -52,8 +52,8 @@ def customer():
 
 @app.route('/Yummy/api/customer/sign-in', methods=['POST'])
 def login():
-    global login
-    login+=1
+    global logins
+    logins+=1
     return jsonify({"result": 0})
 
 @app.route('/Yummy/api/restaurant/order/post', methods=['POST'])

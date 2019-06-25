@@ -103,7 +103,7 @@ export default {
       category: 0,
       morePage: true,
       page: 0,
-      pageSize: 8,
+      pageSize: 6,
       list: [],
       showList: null,
       line: 2,
@@ -131,7 +131,8 @@ export default {
        */
       this.$ajax.get('/restaurant', {
         params: {
-          page: this.page + 1
+          page: this.page + 1,
+          pageSize: this.pageSize
         }
       }).then(res => {
         if (res.data.code === 0) {
@@ -204,6 +205,7 @@ export default {
     },
     enterRestaurant: function (id) {
       console.log(id)
+      this['$router'].push('/customer/home/shop/' + id)
     },
     backTop: function () {
       document.body.scrollTop = 0

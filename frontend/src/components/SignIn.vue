@@ -110,8 +110,20 @@ export default {
       }
     },
     customerSignIn: function () {
-      // Pretend to have signed in. Back end will always return the same customer.
-      this['$router'].push('/customer/home')
+      this.$ajax({
+        url: '/customer/sign-in',
+        method: 'post',
+        params: {
+          email: this.email,
+          pwd: this.pwd
+        }
+      }).then(res => {
+        if (window.history.length > 1) {
+          this['$router'].go(-1)
+        } else {
+          this['$router'].push('/customer/home')
+        }
+      })
     }
   }
 }

@@ -14,12 +14,10 @@ export default {
   components: {CustomerHeader},
   beforeMount: function () {
     this.$ajax({
-      url: '/customer/info/get',
+      url: '/customer/get',
       method: 'get'
     }).then(res => {
-      if (res.data.data['AccessDenied']) {
-        this.$router.push('/')
-      } else {
+      if (res.data.data['AccessDenied'] === undefined) {
         this.info.name = res.data.data['name']
       }
     })

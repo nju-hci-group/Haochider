@@ -8,7 +8,7 @@
       >
         <h3>首页</h3>
       </v-btn>
-      <v-btn flat large @click="$router.push('/customer/home/MyOrders')">
+      <v-btn flat large @click="toOrders">
         <h3>我的订单</h3>
       </v-btn>
     </template>
@@ -21,11 +21,11 @@
         <v-icon>arrow_drop_down</v-icon>
       </v-btn>
       <v-list dense>
-        <v-list-tile href="/customer/home/UserInfo">
+        <v-list-tile @click="$router.push('/customer/home/UserInfo')">
           <v-icon>person</v-icon>
           <v-list-tile-title>个人中心</v-list-tile-title>
         </v-list-tile>
-        <v-list-tile href="/customer/home/AddressManage">
+        <v-list-tile @click="$router.push('/customer/home/AddressManage')">
           <v-icon>location_on</v-icon>
           <v-list-tile-title>我的地址</v-list-tile-title>
         </v-list-tile>
@@ -36,7 +36,7 @@
         </v-list-tile>
       </v-list>
     </v-menu>
-    <v-btn v-else flat>
+    <v-btn v-else flat @click="$router.push('/sign-in')">
       <v-icon>person</v-icon>
       <h4>登录/注册</h4>
     </v-btn>
@@ -60,7 +60,22 @@ export default {
       this.$ajax({
         url: '/customer/sign-out',
         method: 'post'
-      }).then(() => this.$router.push('/'))
+      }).then(() => {
+        this['$router'].push('/customer/home')
+        window.location.reload()
+      })
+    },
+    toOrders: function () {
+      this.$ajax({
+        url: '/customer/get',
+        method: 'get'
+      }).then(res => {
+        if (res.data.data['AccessDenied'] === undefined) {
+          this['$router'].push('/customer/home/MyOrders')
+        } else {
+          this['$router'].push('/sign-in')
+        }
+      })
     }
   }
 }

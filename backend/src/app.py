@@ -11,7 +11,7 @@ CORS(app, supports_credentials=True)
 @app.route('/hello')
 def hello_world():
     return "hello"
-@app.route('/customer/orders/get')
+@app.route('/Yummy/api/customer/orders/get')
 def oredr_get():
     orders=[]
     orderLists=[]
@@ -43,20 +43,20 @@ def oredr_get():
 
     return jsonify({'data':orders})
 
-@app.route('/Yummy/api/customer/get',methods=['GET'])
+@app.route('/Yummy/api/customer/info/get',methods=['GET'])
 def customer():
     return jsonify({"username":"蔡徐坤"})
 
 @app.route('/Yummy/api/customer/sign-in', methods=['POST'])
 def login():
-    email = request.args.get('email')
-    pew=request.args.get('pwd')
-    cust = Customer.get(email)
-    session['email']=email
-    session['username'] = cust.name
+
     return jsonify({"result":0})
 
-@app.route('/restaurant/name/get',methods=['GET'])
+@app.route('/Yummy/api/restaurant/order/post', methods=['POST'])
+def orderpost():
+
+    return jsonify({"result":0})
+@app.route('/Yummy/api/restaurant/name/get',methods=['GET'])
 def rname():
     rid = request.args.get("rid")
     res_data = NewRes.get(rid=rid)
@@ -91,7 +91,7 @@ def res_meals():
     return res_json
 
 
-@app.route('/restaurant/categories', methods=['GET'])
+@app.route('/Yummy/api/restaurant/categories', methods=['GET'])
 def res_c():
     type_data = NewTag.select()
     type_res = []
@@ -99,7 +99,7 @@ def res_c():
         type_res.append(e.tagname)
     return jsonify({'code': 1, 'data': type_res})
 
-@app.route('/restaurant', methods=['GET'])
+@app.route('/Yummy/api/restaurant', methods=['GET'])
 def res_show():
     res_json = []
     photo_data=[]

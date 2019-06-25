@@ -3,7 +3,7 @@ from flask_cors import *
 from peewee import *
 import random
 
-from src.yummyModel import *
+from yummyModel import *
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)

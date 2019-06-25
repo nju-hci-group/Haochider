@@ -12,11 +12,41 @@ app.config['SESSION_TYPE'] = 'redis'  # session类型为redis
 app.config['SESSION_PERMANENT'] = False  # 如果设置为True，则关闭浏览器session就失效。
 app.config['SESSION_USE_SIGNER'] = False  # 是否对发送到浏览器上session的cookie值进行加密
 app.config['SESSION_KEY_PREFIX'] = 'session:'  # 保存到session中的值的前缀
-
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 @app.route('/hello')
 def hello_world():
     return "hello"
+@app.route('/customer/orders/get')
+def oredr_get():
+    orders=[]
+    orderLists=[]
+    email = ""
+    if 'email' in session:
+       email = session['email']
+    else:
+        return jsonify({"res": "PleasLogin"})
 
+    order_s = NewOrder.select().where(NewOrder.uid == email)
+    for e in order_s:
+        s = NewOrderlist.select().where(NewOrderlist.oid == e.oid)
+        for ele in s:
+            p = NewMeal.get(ele.mid)
+            orderLists.append({"name": p.name, "price": p.price, "num": ele.num})
+        r = NewRes.select().where(NewRes.rid == e.tid)
+        for es in r:
+            rs = es
+        if e.stata == 0:
+            state = "已完成"
+        elif e.stata == 1:
+            state = "待送达"
+        elif e.stata == 2:
+            state = "已取消"
+        orders.append(
+            {"id": e.oid, "time": e.time, "avatar": rs.photo, "rid": rs.rid, "price": e.cost, "orders": orderLists,
+             "state": state, "contents": ''})
+        orderLists = []
+
+    return jsonify({'data':orders})
 
 @app.route('/Yummy/api/customer/get',methods=['GET'])
 def customer():
@@ -25,12 +55,12 @@ def customer():
         return jsonify({"name": session['username']})
     return "AccessDenied"
 
-@app.route('/Yummy/api//customer/sigh-in', methods=['POST'])
+@app.route('/Yummy/api/customer/sign-in', methods=['POST'])
 def login():
     email = request.args.get('email')
     pew=request.args.get('pwd')
     cust = Customer.get(email)
-
+    session['email']=email
     session['username'] = cust.name
     return jsonify({"result":0})
 
@@ -40,11 +70,8 @@ def login():
 
 @app.route('/Yummy/api/restaurant/get',methods=['GET'])
 def res():
-    map_data=[]
-
     rid=request.args.get("rid")
     res_data = NewRes.get(rid=rid)
-
     mda=res_data.dc
     if(mda=="免配送费"):
         mda=0
@@ -66,14 +93,18 @@ def res_meals():
         res_json.append({"id":ele.nid,"name":ele.name,"desc":ele.des,"price":ele.price,"type":ele.type,"picSrc":ele.photo})
     return res_json
 
-@app.route('/Yummy/api/restaurant', methods=['GET'])
+
+@app.route('/restaurant/categories', methods=['GET'])
+def res_c():
+    type_data = NewTag.select()
+    type_res = []
+    for e in type_data:
+        type_res.append(e.tagname)
+    return jsonify({'code': 1, 'data': type_res})
+
+@app.route('/restaurant', methods=['GET'])
 def res_show():
     res_json = []
-    type_data=NewTag.select()
-    type_res=[]
-    for e in  type_data:
-        type_res.append(e.tagname)
-    res_json.append(type_res)
     photo_data=[]
     photo_data.append({"https://fuss10.elemecdn.com/7afe0df785fe8e04f009cddf0ff372d5jpeg.jpeg", "E5545917783901406104"})
     photo_data.append({"https://fuss10.elemecdn.com/f88c26b6c61ae96459894e864a56eb30jpeg.jpeg", "E14825464048244892398"})
@@ -101,4 +132,5 @@ if __name__ == '__main__':
     # http_server.serve_forever()
 
     app.config["JSON_AS_ASCII"]=False
+    app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
     app.run()

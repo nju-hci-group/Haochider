@@ -134,7 +134,7 @@ def res_show():
     limit2 = pageSize
     resa = NewRes.select().limit(limit2).offset(limit1)
     for e in resa:
-        res_data.append({e.rid,e.name,e.des,e.area,e.photo,random.choice("123456789")})
+        res_data.append({"id":e.rid,"name":e.name,"description":e.des,"address":e.area,"type":random.choice("123456789"),"image":e.photo})
     return jsonify({'data': res_data})
 if __name__ == '__main__':
     # http_server = WSGIServer(('',5000),app)

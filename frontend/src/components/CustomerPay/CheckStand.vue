@@ -89,6 +89,7 @@
     name: 'CheckStand',
     data() {
       return {
+        rid: '',
         dialogVisible : false,
         sumPrice: 0,
         restaurantName:'',
@@ -105,27 +106,64 @@
     },
 
     methods:{
-      pay(){
+      pay: function () {
         this.dialogVisible = true;
+
+        let orderItems = localStorage.getItem("payItems");
+        orderItems = JSON.parse(orderItems);
+        let newOrder = {
+          rid: this.rid,
+          price: this.sumPrice,
+          orders: []
+        };
+        for (let i = 0; i < orderItems.length; i++) {
+          if (orderItems[i].food !== "配送费" && orderItems[i].food !== "优惠") {
+            newOrder.orders.push(orderItems[i]);
+          }
+        }
+
+        this.$ajax({
+          url: '/restaurant/order/post',
+          method: 'post',
+          data: JSON.stringify(newOrder),
+        }).then(res => {
+          console.log(res.data)
+        });
       },
 
       getOrder() {
         this.sumPrice = localStorage.getItem("price");
-        this.restaurantName = "麦当劳（中山大厦店）";
+       /* let order = localStorage.getItem("orderInfo");
+        order = JSON.parse(JSON.stringify(order));
+        this.rid = order.rid;
+
+
+        this.$ajax({
+          url: '/restaurant/name/get',
+          method: 'get',
+          params: {
+            'rid': this.rid
+          }
+        }).then(res => {
+          this.restaurantName = res.data.data['name'];
+        });*/
+
+       this.restaurantName = "水林间（南京紫峰店）";
+
         this.username = "蔡徐坤";
         this.tel = "15189585960";
         this.address = "江苏省南京市鼓楼区南京大学";
-        let orderItems = {
-          'xxx': {name: 'abc', price: 20.233, num: 2}, // key是菜品编号，value是数量
-          'xxxx': {name: 'bbc', price: 20.23, num: 1},
-        };
+        let orderItems = localStorage.getItem("payItems");
+        orderItems = JSON.parse(orderItems);
 
         let orders = [];
+
         Object.keys(orderItems).forEach(function (key) {
-          let name = orderItems[key].name;
-          let num = orderItems[key].num;
-          console.log(name + "  x" + num + '\n');
-          orders.push(name + "  x" + num + '\n');
+          let name = orderItems[key].food;
+          let num = orderItems[key].number;
+          if (name !== "配送费" && name !== "优惠"){
+            orders.push(name + "  x" + num + '\n');
+          }
         });
         this.foods = orders;
       }

@@ -122,7 +122,7 @@
            *    name: 'username',
            * }
            */
-          this.UserInfos.name = res.data.name;
+          this.UserInfos.name = res.data.data.name;
         })
       }
     }

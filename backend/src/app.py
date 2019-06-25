@@ -1,6 +1,9 @@
 from flask import Flask, request, jsonify, session
 from flask_cors import *
 import random
+
+import time
+
 from yummyModel import *
 
 app = Flask(__name__)
@@ -34,7 +37,7 @@ def oredr_get():
         elif e.stata == 2:
             state = "已取消"
         orders.append(
-            {"id": e.oid, "time": e.time, "avatar": rs.photo, "rid": rs.rid,"rname":rs.name, "price": e.cost, "orders": orderLists,
+            {"id": e.oid, "time": time.strftime('%Y-%m-%d %H:%M:%S',e.time), "avatar": rs.photo, "rid": rs.rid,"rname":rs.name, "price": e.cost, "orders": orderLists,
              "state": state, "contents": ''})
         orderLists = []
 
@@ -59,8 +62,8 @@ def orderpost():
         rid = request.data['rid']
         price = request.data['price']
         orders = request.data['orders']
-    # time=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
-    p = NewOrder.create(tid=rid, cost=price, stata=0, uid="161250192@smail.nju.edu.cn", time='2019-6-29 20:00:00')
+    times=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
+    p = NewOrder.create(tid=rid, cost=price, stata=0, uid="161250192@smail.nju.edu.cn", time=times)
     for e in orders:
         ol = NewOrderlist.create(mid=e['fid'], num=e['number'], oid=p.oid)
     return jsonify({"result": "success"})

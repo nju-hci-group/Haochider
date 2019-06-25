@@ -90,6 +90,7 @@
 <script>
 export default {
   name: 'SignIn',
+  props: ['nextRoute'],
   data: function () {
     return {
       userRoles: ['顾客', '商家', '管理员'],
@@ -110,8 +111,20 @@ export default {
       }
     },
     customerSignIn: function () {
-      // Pretend to have signed in. Back end will always return the same customer.
-      this['$router'].push('/customer/home')
+      this.$ajax({
+        url: '/customer/sign-in',
+        method: 'post',
+        params: {
+          email: this.email,
+          pwd: this.pwd
+        }
+      }).then(res => {
+        if (this.nextRoute !== undefined) {
+          this['$router'].push(this.nextRoute)
+        } else {
+          this['$router'].push('/customer/home')
+        }
+      })
     }
   }
 }

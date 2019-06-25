@@ -11,8 +11,13 @@ export default new Router({
   routes: [
     {
       path: '/',
+      redirect: '/customer/home'
+    },
+    {
+      path: '/sign-in',
       name: 'SignIn',
-      component: SignIn
+      component: SignIn,
+      props: route => ({'nextRoute': route.query['next-route']})
     }
   ].concat(customerRoutes)
     .concat(restaurantRoutes)

@@ -59,7 +59,7 @@ def login():
 @app.route('/Yummy/api/customer/sign-out', methods=['POST'])
 def logout():
     global logins
-    logins==0
+    logins=0
     return jsonify({"result": 0})
 
 

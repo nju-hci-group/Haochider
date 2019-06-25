@@ -25,7 +25,7 @@
               订单详情
             </div>
             <el-collapse style="margin-left: 5%">
-              <el-collapse-item title="外卖订单" name="1">
+              <el-collapse-item title="外卖订单" style="" name="1">
                 <div>{{this.restaurantName}}</div>
                 <div>{{this.username}}</div>
                 <div>{{this.tel}}</div>
@@ -71,7 +71,7 @@
                 title="扫码支付"
                 :visible.sync="dialogVisible"
                 width="30%"
-                >
+              >
                 <p align="center">
                   <img :src="require('../../assets/timg.jpg')" width="200" height="200"/>
                 </p>
@@ -134,5 +134,7 @@
 </script>
 
 <style scoped>
-
+  .el-collapse-item__header {
+    border-bottom-color: dodgerblue;
+  }
 </style>

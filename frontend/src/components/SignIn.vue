@@ -1,12 +1,18 @@
 <template>
-  <div>
-    <v-layout row xs12>
-      <InitHeader></InitHeader>
-    </v-layout>
-    <v-layout row wrap justify-center>
-      <v-flex xs1 sm2 md3></v-flex>
-      <v-flex>
-        <v-card class="elevation-10">
+  <v-layout class="outer-layout" justify-center>
+    <v-flex xs1 sm2 md4></v-flex>
+    <v-flex>
+      <!----------------- Logo ------------------>
+      <v-layout my-4 justify-center>
+        <v-img
+          :src="require('../assets/logo.png')"
+          max-height="80"
+          max-width="200"
+        ></v-img>
+      </v-layout>
+      <!----------------- Login Card ------------------->
+      <v-layout>
+        <v-card flat width="500">
           <v-card-title primary-title>
             <v-layout row wrap justify-center>
               <h1>登录</h1>
@@ -15,90 +21,92 @@
           <v-divider/>
           <v-card-text>
             <v-form ref="signInForm" lazy-validation>
-              <v-layout row wrap justify-start>
-                <v-select :items="userRoles" label="请选择身份" v-model="role"></v-select>
-              </v-layout>
-              <v-layout v-if="role !== userRoles[2]" row wrap justify-start>
+              <v-layout row wrap justify-start mx-4>
                 <v-text-field
-                  :label="role === userRoles[0] ? '电子邮件' : 'ID'"
-                  :rules="role === userRoles[0] ? emailRules : idRules"
+                  label="电子邮件"
+                  :rules="emailRules"
                   v-model="username"
                 ></v-text-field>
               </v-layout>
-              <v-layout row wrap justify-start>
+              <v-layout row wrap justify-start mx-4>
                 <v-text-field
                   label="密码"
-                  :rules="pwdRules"
                   type="password"
                   v-model="pwd"
                 ></v-text-field>
               </v-layout>
-              <v-layout row wrap align-center justify-end>
-                <v-flex p-x-1>
-                  <router-link to="/customer/sign-up">&lt; 注册为顾客</router-link>
-                </v-flex>
-                <v-flex p-x-1>
-                  <router-link to="/restaurant/sign-up">&lt; 注册为商家</router-link>
-                </v-flex>
-                <v-flex p-x-1>
-                  <v-btn color="success" large @click="signIn">立即登录</v-btn>
+              <v-layout row wrap align-center justify-end mx-4 my-2>
+                <v-flex>
+                  <v-btn color="success" large @click="signIn" block>
+                    <h3>立即登录</h3>
+                  </v-btn>
                 </v-flex>
               </v-layout>
             </v-form>
+            <v-layout mx-4>
+              <v-flex>
+                <h4>或使用关联的社交账户登录</h4>
+              </v-flex>
+            </v-layout>
+            <v-layout mx-4 my-2>
+              <v-flex mr-2>
+                <v-btn color="primary" large block>
+                  <h3>使用QQ登录</h3>
+                </v-btn>
+              </v-flex>
+              <v-flex ml-2>
+                <v-btn color="primary" large block>
+                  <h3>使用微信登录</h3>
+                </v-btn>
+              </v-flex>
+            </v-layout>
+            <v-layout mx-4 mt-3>
+              <v-flex>
+                <router-link to="">忘记密码？</router-link>
+              </v-flex>
+            </v-layout>
           </v-card-text>
-          <v-snackbar v-model="snackbar" top>
-            {{errMsg}}
-            <v-btn color="pink" flat @click="snackbar = ''">关闭</v-btn>
-          </v-snackbar>
         </v-card>
-      </v-flex>
-      <v-flex xs1 sm2 md3></v-flex>
-    </v-layout>
-  </div>
+      </v-layout>
+      <!----------------- Sign Up Link ----------------->
+      <v-layout mx-4 my-3>
+        <v-flex>
+          <v-btn dark to="/customer/sign-up" block flat>
+            <h3>
+              没有帐号？注册 &gt;
+            </h3>
+          </v-btn>
+        </v-flex>
+      </v-layout>
+    </v-flex>
+    <v-flex xs1 sm2 md4></v-flex>
+    <v-snackbar v-model="snackbar" top>
+      {{errMsg}}
+      <v-btn color="pink" flat @click="snackbar = ''">关闭</v-btn>
+    </v-snackbar>
+  </v-layout>
 </template>
 
 <script>
-import InitHeader from '@/components/InitHeader'
 export default {
   name: 'SignIn',
-  components: {InitHeader},
   data: function () {
     return {
       userRoles: ['顾客', '商家', '管理员'],
       role: '顾客',
       username: '',
       pwd: '',
-      emailRules: [
-        email => !!email || '请输入电子邮件地址',
-        email => /.+@.+/.test(email) || '电子邮件地址格式不正确'
-      ],
-      idRules: [
-        id => !!id || '请输入商家ID'
-      ],
-      pwdRules: [
-        pwd => !!pwd || '请输入密码'
-      ],
+      emailRules: [],
       errMsg: '',
       snackbar: false
     }
   },
   methods: {
     signIn: function () {
-      if (this.$refs.signInForm.validate()) {
-        switch (this.role) {
-          case this.userRoles[0]:
-            this.customerSignIn()
-            break
-          case this.userRoles[1]:
-            this.restaurantSignIn()
-            break
-          case this.userRoles[2]:
-            this.adminSignIn()
-            break
-          default:
-            this.errMsg = 'Action not supported.'
-            break
-        }
+      this.emailRules.push(email => !!email || '请输入电子邮件地址')
+      this.emailRules.push(email => /.+@.+/.test(email) || '电子邮件地址格式不正确')
+      if (this['$refs']['signInForm'].validate()) {
+        this.customerSignIn()
       }
     },
     customerSignIn: function () {
@@ -110,9 +118,9 @@ export default {
           pwd: this.pwd
         }
       }).then((res) => {
-        switch (res.data.result) {
+        switch (res.data.data['result']) {
           case 0:
-            this.$router.push('/customer/home')
+            this['$router'].push('/customer/home')
             this.errMsg = ''
             this.snackbar = false
             break
@@ -121,61 +129,6 @@ export default {
             this.snackbar = true
             break
           case 2:
-            this.errMsg = '密码错误'
-            this.snackbar = true
-            break
-          default:
-            this.errMsg = '未知错误'
-            this.snackbar = true
-            break
-        }
-      })
-    },
-    restaurantSignIn: function () {
-      this.$ajax({
-        url: '/restaurant/sign-in',
-        method: 'post',
-        params: {
-          id: this.username,
-          pwd: this.pwd
-        }
-      }).then((res) => {
-        switch (res.data.result) {
-          case 0:
-            this.$router.push('/restaurant/home')
-            this.errMsg = ''
-            this.snackbar = false
-            break
-          case 1:
-            this.errMsg = '帐号不存在'
-            this.snackbar = true
-            break
-          case 2:
-            this.errMsg = '密码错误'
-            this.snackbar = true
-            break
-          default:
-            this.errMsg = '未知错误'
-            this.snackbar = true
-            break
-        }
-      })
-    },
-    adminSignIn: function () {
-      this.$ajax({
-        url: '/admin/sign-in',
-        method: 'post',
-        params: {
-          pwd: this.pwd
-        }
-      }).then((res) => {
-        switch (res.data.result) {
-          case 0:
-            this.$router.push('/admin')
-            this.errMsg = ''
-            this.snackbar = false
-            break
-          case 1:
             this.errMsg = '密码错误'
             this.snackbar = true
             break
@@ -191,5 +144,9 @@ export default {
 </script>
 
 <style scoped>
-
+.outer-layout {
+  background-color: #1E89E0;
+  width: 100%;
+  height: 100%;
+}
 </style>

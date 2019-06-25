@@ -49,8 +49,7 @@ export default {
   name: 'CustomerHeader',
   components: {HeaderBase},
   props: {
-    'name': String,
-    'lvl': Number
+    'name': String
   },
   data: function () {
     return {

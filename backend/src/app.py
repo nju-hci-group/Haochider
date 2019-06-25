@@ -1,15 +1,41 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, session, url_for, escape
 from flask_cors import *
 from peewee import *
-from yummyModel import *
 import random
+
+from yummyModel import *
+
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
+app.config['SESSION_TYPE'] = 'redis'  # session类型为redis
+app.config['SESSION_PERMANENT'] = False  # 如果设置为True，则关闭浏览器session就失效。
+app.config['SESSION_USE_SIGNER'] = False  # 是否对发送到浏览器上session的cookie值进行加密
+app.config['SESSION_KEY_PREFIX'] = 'session:'  # 保存到session中的值的前缀
 
 @app.route('/hello')
 def hello_world():
-    return 'Hello World!'
+    return "hello"
+
+
+@app.route('/Yummy/api/customer/get',methods=['GET'])
+def customer():
+    if 'username' in session:
+        # return 'Logged in as %s' % escape(session['username'])
+        return jsonify({"name": session['username']})
+    return "AccessDenied"
+
+@app.route('/Yummy/api//customer/sigh-in', methods=['POST'])
+def login():
+    email = request.args.get('email')
+    pew=request.args.get('pwd')
+    cust = Customer.get(email)
+
+    session['username'] = cust.name
+    return jsonify({"result":0})
+
+
+
 
 
 @app.route('/Yummy/api/restaurant/get',methods=['GET'])

@@ -45,7 +45,7 @@ def oredr_get():
 
 @app.route('/Yummy/api/customer/get',methods=['GET'])
 def customer():
-    if login==0:
+    if logins==0:
         return jsonify({"data":{"AccessDenied":"1"}})
     else:
         return jsonify({"data":{"name":"蔡徐坤"}})

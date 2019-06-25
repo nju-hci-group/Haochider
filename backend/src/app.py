@@ -95,7 +95,7 @@ def res_meals():
     res_json =[]
     for ele in meal_data:
         res_json.append({"id":ele.nid,"name":ele.name,"desc":ele.des,"price":ele.price,"type":ele.type,"picSrc":ele.photo})
-    return res_json
+    return jsonify({'data': res_json})
 
 
 @app.route('/Yummy/api/restaurant/categories', methods=['GET'])
@@ -104,7 +104,7 @@ def res_c():
     type_res = []
     for e in type_data:
         type_res.append({e.tagname})
-    return type_res
+    return jsonify({'data': type_res})
 
 @app.route('/Yummy/api/restaurant/pictures', methods=['GET'])
 def res_p():
@@ -122,7 +122,7 @@ def res_p():
         {'url':"https://fuss10.elemecdn.com/016b2de4ab16fafeac00b678d469866ajpeg.jpeg", 'rid':"E15056118707731574566"})
     photo_data.append(
         {'url':"https://fuss10.elemecdn.com/6a8432cd40b20dab7b91edf8b0d9a3f1jpeg.jpeg", 'rid':"E15056118707731574566"})
-    return photo_data
+    return jsonify({'data': photo_data})
 
 @app.route('/Yummy/api/restaurant', methods=['GET'])
 def res_show():
@@ -135,7 +135,7 @@ def res_show():
     resa = NewRes.select().limit(limit2).offset(limit1)
     for e in resa:
         res_data.append({e.rid,e.name,e.des,e.area,e.photo,random.choice("123456789")})
-    return res_data
+    return jsonify({'data': res_data})
 if __name__ == '__main__':
     # http_server = WSGIServer(('',5000),app)
     # http_server.serve_forever()

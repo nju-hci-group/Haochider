@@ -101,13 +101,4 @@ if __name__ == '__main__':
     # http_server.serve_forever()
 
     app.config["JSON_AS_ASCII"]=False
-    # res_data = []
-    # page = 2
-    # pageSize = 20
-    # limit1=(page - 1)*pageSize
-    # limit2=pageSize
-    # resa = NewRes.select().limit(limit2).offset(limit1)
-    # for e in resa:
-    #     res_data.append({e.rid, e.name, e.des, e.area, e.photo, random.choice("123456789")})
-    # print(res_data)
     app.run()

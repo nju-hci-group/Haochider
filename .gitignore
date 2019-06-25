@@ -1,2 +1,4 @@
 frontend/node_nodules/**/*
+frontend/.idea/*
+frontend/*.iml
 backend/venv/**/*

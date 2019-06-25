@@ -37,7 +37,7 @@ def oredr_get():
         elif e.stata == 2:
             state = "已取消"
         orders.append(
-            {"id": e.oid, "time": time.strftime('%Y-%m-%d %H:%M:%S',e.time), "avatar": rs.photo, "rid": rs.rid,"rname":rs.name, "price": e.cost, "orders": orderLists,
+            {"id": e.oid, "time": e.time, "avatar": rs.photo, "rid": rs.rid,"rname":rs.name, "price": e.cost, "orders": orderLists,
              "state": state, "contents": ''})
         orderLists = []
 
@@ -55,6 +55,13 @@ def login():
     global logins
     logins+=1
     return jsonify({"result": 0})
+
+@app.route('/Yummy/api/customer/sign-out', methods=['POST'])
+def logout():
+    global logins
+    logins==0
+    return jsonify({"result": 0})
+
 
 @app.route('/Yummy/api/restaurant/order/post', methods=['POST'])
 def orderpost():

@@ -2,7 +2,7 @@
   <v-flex xs12 style="margin-bottom: 60px">
     <v-toolbar dark color="blue" app height="60">
       <v-toolbar-items>
-        <v-btn flat style="padding: 0">
+        <v-btn flat style="padding: 0" @click="$router.push('/customer/home')">
           <v-img
             :src="require('../../assets/logo.png')"
             max-height="100"

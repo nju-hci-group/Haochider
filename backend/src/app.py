@@ -103,12 +103,12 @@ def res_c():
     type_data = NewTag.select()
     type_res = []
     for e in type_data:
-        type_res.append({"name":e.tagname})
+        type_res.append({e.tagname})
     return type_res
 
 @app.route('/Yummy/api/restaurant/pictures', methods=['GET'])
 def res_p():
-    photo_data = []
+    photo_data=[]
     photo_data.append({'url':"https://fuss10.elemecdn.com/7afe0df785fe8e04f009cddf0ff372d5jpeg.jpeg",'rid': "E5545917783901406104"})
     photo_data.append(
         {'url':"https://fuss10.elemecdn.com/f88c26b6c61ae96459894e864a56eb30jpeg.jpeg", 'rid':"E14825464048244892398"})

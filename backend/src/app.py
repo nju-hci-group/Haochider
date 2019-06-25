@@ -1,8 +1,6 @@
-from flask import Flask, request, jsonify, session, url_for, escape
+from flask import Flask, request, jsonify, session
 from flask_cors import *
-from peewee import *
 import random
-
 from yummyModel import *
 
 app = Flask(__name__)
@@ -49,13 +47,22 @@ def customer():
 
 @app.route('/Yummy/api/customer/sign-in', methods=['POST'])
 def login():
-    json=request.args.get("data")
+    return jsonify({"result": 0})
     return jsonify({"result":"success"})
 
 @app.route('/Yummy/api/restaurant/order/post', methods=['POST'])
 def orderpost():
+    if request.method == 'POST':
+        rid = request.data['rid']
+        price = request.data['price']
+        orders = request.data['orders']
+    # time=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
+    p = NewOrder.create(tid=rid, cost=price, stata=0, uid="161250192@smail.nju.edu.cn", time='2019-6-29 20:00:00')
+    for e in orders:
+        ol = NewOrderlist.create(mid=e['fid'], num=e['number'], oid=p.oid)
+    return jsonify({"result": "success"})
 
-    return jsonify({"result":0})
+
 @app.route('/Yummy/api/restaurant/name/get',methods=['GET'])
 def rname():
     rid = request.args.get("rid")
@@ -96,30 +103,29 @@ def res_c():
     type_data = NewTag.select()
     type_res = []
     for e in type_data:
-        type_res.append(e.tagname)
-    return jsonify({'code': 1, 'data': type_res})
+        type_res.append({"name":e.tagname})
+    return type_res
 
 @app.route('/Yummy/api/restaurant/pictures', methods=['GET'])
 def res_p():
     photo_data = []
-    photo_data.append({"https://fuss10.elemecdn.com/7afe0df785fe8e04f009cddf0ff372d5jpeg.jpeg", "E5545917783901406104"})
+    photo_data.append({'url':"https://fuss10.elemecdn.com/7afe0df785fe8e04f009cddf0ff372d5jpeg.jpeg",'rid': "E5545917783901406104"})
     photo_data.append(
-        {"https://fuss10.elemecdn.com/f88c26b6c61ae96459894e864a56eb30jpeg.jpeg", "E14825464048244892398"})
+        {'url':"https://fuss10.elemecdn.com/f88c26b6c61ae96459894e864a56eb30jpeg.jpeg", 'rid':"E14825464048244892398"})
     photo_data.append(
-        {"https://fuss10.elemecdn.com/3b141a39ff987a7bbf99e509723c996ajpeg.jpeg", "E16200833748681328248"})
-    photo_data.append({"https://fuss10.elemecdn.com/b77341aca13efd12874b8d406ba29508jpeg.jpeg", "E6387385026588375130"})
+        {'url':"https://fuss10.elemecdn.com/3b141a39ff987a7bbf99e509723c996ajpeg.jpeg", 'rid':"E16200833748681328248"})
+    photo_data.append({'url':"https://fuss10.elemecdn.com/b77341aca13efd12874b8d406ba29508jpeg.jpeg", 'rid':"E6387385026588375130"})
     photo_data.append(
-        {"https://fuss10.elemecdn.com/c1bd46c09210cc022484a9af0066772cjpeg.jpeg", "E11204101347899364163"})
-    photo_data.append({"https://fuss10.elemecdn.com/d5ccc3d3416a616d14ff128e39f3de48jpeg.jpeg", "E4850881976237283649"})
+        {'url':"https://fuss10.elemecdn.com/c1bd46c09210cc022484a9af0066772cjpeg.jpeg", 'rid':"E11204101347899364163"})
+    photo_data.append({'url':"https://fuss10.elemecdn.com/d5ccc3d3416a616d14ff128e39f3de48jpeg.jpeg", 'rid':"E4850881976237283649"})
     photo_data.append(
-        {"https://fuss10.elemecdn.com/016b2de4ab16fafeac00b678d469866ajpeg.jpeg", "E15056118707731574566"})
+        {'url':"https://fuss10.elemecdn.com/016b2de4ab16fafeac00b678d469866ajpeg.jpeg", 'rid':"E15056118707731574566"})
     photo_data.append(
-        {"https://fuss10.elemecdn.com/6a8432cd40b20dab7b91edf8b0d9a3f1jpeg.jpeg", "E15056118707731574566"})
-    return jsonify({'code': 1, 'data':photo_data})
+        {'url':"https://fuss10.elemecdn.com/6a8432cd40b20dab7b91edf8b0d9a3f1jpeg.jpeg", 'rid':"E15056118707731574566"})
+    return photo_data
 
 @app.route('/Yummy/api/restaurant', methods=['GET'])
 def res_show():
-    res_json = []
     res_data=[]
 
     page=int(request.args.get("page"))
@@ -129,11 +135,9 @@ def res_show():
     resa = NewRes.select().limit(limit2).offset(limit1)
     for e in resa:
         res_data.append({e.rid,e.name,e.des,e.area,e.photo,random.choice("123456789")})
-    res_json.append(res_data)
-    return jsonify({'code': 1, 'data': res_data})
+    return res_data
 if __name__ == '__main__':
     # http_server = WSGIServer(('',5000),app)
     # http_server.serve_forever()
-
     app.config["JSON_AS_ASCII"]=False
     app.run()

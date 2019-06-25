@@ -41,9 +41,9 @@ def oredr_get():
 
     return jsonify({'data':orders})
 
-@app.route('/Yummy/api/customer/info/get',methods=['GET'])
+@app.route('/Yummy/api/customer/get',methods=['GET'])
 def customer():
-    return jsonify({"username":"蔡徐坤"})
+    return jsonify({"data":{"name":"蔡徐坤"}})
 
 @app.route('/Yummy/api/customer/sign-in', methods=['POST'])
 def login():

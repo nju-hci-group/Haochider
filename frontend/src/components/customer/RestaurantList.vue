@@ -118,7 +118,8 @@ export default {
     loadRestaurant: function () {
       /**
        * request param: {
-       *     page: 1
+       *     page: 1,
+       *     pageSize: 6
        * }
        * response form: [{
        *     id: 1,
@@ -164,7 +165,10 @@ export default {
        */
       this.$ajax.get('/restaurant/pictures').then(res => {
         if (res.data.code !== 0) {
-          this.picList = res.data.data
+          let list = res.data.data
+          for (let i of list) {
+            this.picList.push(i['url'])
+          }
         }
       })
     },

@@ -66,9 +66,10 @@ def logout():
 @app.route('/Yummy/api/restaurant/order/post', methods=['POST'])
 def orderpost():
     if request.method == 'POST':
-        rid = request.data['rid']
-        price = request.data['price']
-        orders = request.data['orders']
+        data=request.data
+        rid = data['rid']
+        price = data['price']
+        orders = data['orders']
     times=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
     p = NewOrder.create(tid=rid, cost=price, stata=0, uid="161250192@smail.nju.edu.cn", time=times)
     for e in orders:

@@ -81,7 +81,9 @@ def rname():
     rid = request.args.get("rid")
     res_data = NewRes.get(rid=rid)
     rname = NewRes.name
-    return jsonify({"name":rname+''})
+    res=[]
+    res.append(rname)
+    return jsonify({"name":res})
 
 
 

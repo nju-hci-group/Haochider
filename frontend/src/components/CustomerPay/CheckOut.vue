@@ -3,17 +3,13 @@
     <div style="background-color: #1E89E0">
       <el-row>
         <el-col :span="4" style="margin-top: 1%">
-          <img :src="require('../../assets/logo.png')" width="140" height="70"/>
+          <img :src="require('../../assets/logo.png')" width="140" height="70" @click="gotoHome()" style="cursor: pointer"/>
         </el-col>
         <el-col :span="4" style="margin-top: 1.4%; margin-left: -3%">
           <span style="color: white; font-size: 26px" >| 订单信息</span>
         </el-col>
         <el-col :span="16" style="margin-top: 1%;"  >
-          <el-steps :space="200" :active="2" align-center="" style="float: right;width: 60%; " >
-            <el-step title="选择商品" ></el-step>
-            <el-step title="确认订单信息"></el-step>
-            <el-step title="成功提交订单"></el-step>
-          </el-steps>
+          <img :src="require('../../assets/step2.png')" width="500" style="float: right"/>
         </el-col>
       </el-row>
     </div>
@@ -185,6 +181,10 @@
     },
 
     methods:{
+      gotoHome(){
+        this.$router.push('/customer/home');
+      },
+
       getDefaultAddress(){
         this.arriveTime = "立即送达";
         let date = new Date();
@@ -261,7 +261,7 @@
 
       addAddress(){
         this.dialogFormVisible = false;
-        this.value = this.form.address;
+        this.value = this.form.address + '       ' + this.form.tel;
         this.addresses.push({address:this.form.address, tel:this.form.tel});
         this.form.tel = "";
         this.form.address = "";

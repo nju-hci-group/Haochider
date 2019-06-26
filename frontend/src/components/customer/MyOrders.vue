@@ -164,7 +164,12 @@
           } else {
             this.orderData = res.data.data;
             for (let i = 0; i < this.orderData.length; i++){
-              let foods = this.orderData[i].orders;
+              console.log(this.orderData[i].time);
+              let date = new Date(this.orderData[i].time);
+              let date_value=date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+              console.log(date_value);
+              this.orderData[i].time = date_value;
+              let foods = this.orderData[i].cartItems;
               let name = "";
               let num = 0;
               Object.keys(foods).some(function(key){

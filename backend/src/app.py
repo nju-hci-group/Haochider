@@ -37,7 +37,7 @@ def oredr_get():
         elif e.stata == 2:
             state = "已取消"
         orders.append(
-            {"id": e.oid, "time": e.time, "avatar": rs.photo, "rid": rs.rid,"rname":rs.name, "price": e.cost, "orders": orderLists,
+            {"id": e.oid, "time": e.time, "avatar": rs.photo, "rid": rs.rid,"rname":rs.name, "price": e.cost, "cartItems": orderLists,
              "state": state, "contents": ''})
         orderLists = []
 

@@ -3,17 +3,17 @@
     <div style="background-color: #1E89E0">
       <el-row>
         <el-col :span="4" style="margin-top: 1%">
-          <img :src="require('../../assets/logo.png')" width="140" height="70"/>
+          <img :src="require('../../assets/logo.png')" width="140" height="70" @click="gotoHome()" style="cursor: pointer"/>
         </el-col>
         <el-col :span="4" style="margin-top: 1.4%; margin-left: -3%">
           <span style="color: white; font-size: 26px" >| 收银台</span>
         </el-col>
         <el-col :span="16" style="margin-top: 1%;"  >
-          <el-steps :space="200" :active="3" align-center="" style="float: right;width: 60%">
+         <!-- <el-steps :space="200" :active="3" align-center="" style="float: right;width: 60%">
             <el-step title="选择商品"></el-step>
             <el-step title="确认订单信息"></el-step>
             <el-step title="成功提交订单"></el-step>
-          </el-steps>
+          </el-steps>-->
         </el-col>
       </el-row>
     </div>
@@ -106,6 +106,10 @@
     },
 
     methods:{
+      gotoHome(){
+        this.$router.push('/customer/home');
+      },
+
       pay: function () {
         this.dialogVisible = true;
 
@@ -127,7 +131,9 @@
           method: 'post',
           data: JSON.stringify(newOrder),
         }).then(res => {
-          console.log(res.data)
+          console.log(res.data);
+          setTimeout(this.gotoHome, 10000);
+
         });
       },
 
@@ -139,7 +145,7 @@
         console.log(this.rid);
 
         this.$ajax({
-          url: '/restaurant/name/get',
+          url: '/restaurant/get',
           method: 'get',
           params: {
             'rid': this.rid

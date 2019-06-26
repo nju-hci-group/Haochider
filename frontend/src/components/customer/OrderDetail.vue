@@ -173,7 +173,7 @@
         let order = localStorage.getItem("order");
         order = JSON.parse(order);
         console.log(order);
-        let foods = order.orders;
+        let foods = order.cartItems;
         let price = 0;
         for (let i = 0; i < foods.length; i++){
           this.shoppingCartTableData.push({food: foods[i].name, number: foods[i].num, price: "￥" + (foods[i].price * foods[i].num).toFixed(2), singlePrice: foods[i].price});

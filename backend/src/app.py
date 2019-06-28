@@ -119,7 +119,7 @@ def res_c():
     type_data = NewTag.select()
     type_res = []
     for e in type_data:
-        type_res.append({e.tagname})
+        type_res.append(e.tagname)
     return jsonify({'data': type_res})
 
 @app.route('/Yummy/api/restaurant/pictures', methods=['GET'])
@@ -159,7 +159,7 @@ def res_show():
             photo="https://fuss10.elemecdn.com/"+e.photo+".jpeg"
         else:
             photo = "https://fuss10.elemecdn.com/" + e.photo + ".png"
-        res_data.append({"id":e.rid,"name":e.name,"description":e.des,"address":e.area,"type":random.choice("123456789"),"image":e.photo})
+        res_data.append({"id":e.rid,"name":e.name,"description":e.des,"address":e.area,"type":random.choice("123456789"),"image":photo})
     return jsonify({'data': res_data})
 if __name__ == '__main__':
     # http_server = WSGIServer(('',5000),app)

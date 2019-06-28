@@ -45,7 +45,7 @@
         <v-toolbar dense>
           <v-toolbar-title>商家分类  </v-toolbar-title>
           <template v-for="(item, index) in categories">
-            <v-btn :color="index === category ? 'primary' : 'normal'" small :key="index" @click="selectCategory(key)">{{item}}</v-btn>
+            <v-btn :color="index === category ? 'primary' : 'normal'" small :key="index" @click="selectCategory(index)">{{item}}</v-btn>
           </template>
         </v-toolbar>
       </v-container>
@@ -88,24 +88,23 @@ export default {
   },
   name: 'RestaurantList',
   beforeMount: function () {
+  },
+  mounted () {
     this.loadRestaurant()
     this.loadCategories()
     this.loadPicList()
-    this.showList = this.list.concat()
-  },
-  mounted () {
-    this.scroll(this.list)
+    this.scroll()
   },
   data: function () {
     return {
       picList: [],
-      categories: ['全部商家', '快餐便当', '小吃夜宵', '饮品甜品'],
+      categories: [],
       category: 0,
       morePage: true,
       page: 0,
       pageSize: 6,
       list: [],
-      showList: null,
+      showList: [],
       line: 2,
       column: 3,
       province: '江苏省',
@@ -136,16 +135,17 @@ export default {
           pageSize: this.pageSize
         }
       }).then(res => {
-        if (res.data.code === 0) {
-          console.log('请求出错')
-        } else {
-          if (res.data.length > 0) {
-            this.list.push(...res.data.data)
-            this.page++
-          } else {
-            this.morePage = false
+        if (res.data.data.length > 0) {
+          this.list.push(...res.data.data)
+          for (let i = 0; i < this.list.length; i++) {
+            this.list[i].type = parseInt(this.list[i].type, 10)
           }
+          this.page++
+        } else {
+          this.morePage = false
         }
+        this.showList = this.list.concat()
+        console.log(this.list)
       })
     },
     loadCategories: function () {
@@ -153,10 +153,8 @@ export default {
        * response form: ['快餐便当', '小吃夜宵', '饮品甜品']
        */
       this.$ajax.get('/restaurant/categories').then(res => {
-        if (res.data.code !== 0) {
-          this.category = res.data.data
-          this.category.splice(0, 0, '全部商家')
-        }
+        this.categories = res.data.data
+        this.categories.splice(0, 0, '全部商家')
       })
     },
     loadPicList: function () {
@@ -164,11 +162,9 @@ export default {
        * response form: ['image-link'] 每一项是图片链接，总共九项
        */
       this.$ajax.get('/restaurant/pictures').then(res => {
-        if (res.data.code !== 0) {
-          let list = res.data.data
-          for (let i of list) {
-            this.picList.push(i['url'])
-          }
+        let list = res.data.data
+        for (let i of list) {
+          this.picList.push(i['url'])
         }
       })
     },
@@ -242,5 +238,8 @@ export default {
   text-align: left;
   padding-top: 20px;
   margin-bottom: 0;
+}
+.container.grid-list-sm .layout .flex{
+  padding: 3px 10px 23px 10px;
 }
 </style>

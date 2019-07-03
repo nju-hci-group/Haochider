@@ -217,7 +217,7 @@
           this.shoppingCartTableData[0].number = this.shoppingCartTableData[0].number + 1;*/
           this.shoppingCartTableData.splice(index, 1);
         }
-        this.shoppingCartTableData[index].price = this.shoppingCartTableData[index].singlePrice * this.shoppingCartTableData[index].number;
+        this.shoppingCartTableData[index].price = (this.shoppingCartTableData[index].singlePrice * this.shoppingCartTableData[index].number).toFixed(2);
         this.sumPrice = 0;
         this.sumNumber = 0;
         let tempSum = 0;

@@ -26,7 +26,7 @@ CREATE TABLE `customer` (
   `email` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `pwd` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `phone` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `phone` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `level` int(3) unsigned NOT NULL DEFAULT '0',
   `valid` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`email`)
@@ -55,7 +55,7 @@ CREATE TABLE `new_area` (
   `area` varchar(45) DEFAULT NULL,
   `des` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`aid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -83,7 +83,7 @@ CREATE TABLE `new_meal` (
   `photo` varchar(100) DEFAULT NULL,
   `type` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`nid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -111,7 +111,7 @@ CREATE TABLE `new_order` (
   `time` timestamp NULL DEFAULT NULL,
   `cost` double DEFAULT NULL,
   PRIMARY KEY (`oid`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,7 +137,7 @@ CREATE TABLE `new_orderlist` (
   `mid` varchar(45) DEFAULT NULL,
   `num` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -162,7 +162,7 @@ CREATE TABLE `new_promotion` (
   `amount` double DEFAULT NULL,
   `discount` double DEFAULT NULL,
   PRIMARY KEY (`promotionid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -192,7 +192,7 @@ CREATE TABLE `new_res` (
   `stars` varchar(45) DEFAULT NULL,
   `promotion` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`rid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -216,7 +216,7 @@ CREATE TABLE `new_tag` (
   `tagid` varchar(45) NOT NULL,
   `tagname` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`tagid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -241,7 +241,7 @@ CREATE TABLE `new_tag_res` (
   `rid` varchar(45) DEFAULT NULL,
   `tagid` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5269 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5269 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

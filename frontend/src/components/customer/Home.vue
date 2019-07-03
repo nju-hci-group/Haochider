@@ -17,7 +17,6 @@ export default {
       url: '/customer/get',
       method: 'get'
     }).then(res => {
-      console.log(res.data.data)
       if (res.data.data['AccessDenied'] === undefined) {
         this.info.name = res.data.data['name']
       }

@@ -52,7 +52,7 @@
                   @click="afterTypeSelected(type)"
                 >
                   <v-list-tile-content>
-                    <v-list-tile-title class="text-xs-right">{{type}}</v-list-tile-title>
+                    <v-list-tile-title class="text-xs-right">{{compressStr(type, 10)}}</v-list-tile-title>
                   </v-list-tile-content>
                 </v-list-tile>
               </template>

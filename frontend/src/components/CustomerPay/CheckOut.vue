@@ -250,7 +250,6 @@
           document.getElementById("row2").style.display="inline"
           this.restVisible = true;
         }
-        console.log(this.shoppingCartTableData[0].number);
       },
 
       cancelAddAddress(){
@@ -340,7 +339,6 @@
             if (this.shoppingCartTableData[i].food !== "配送费" &&  this.shoppingCartTableData[i].food !== "优惠")
               this.sumNumber += this.shoppingCartTableData[i].number;
           }
-          this.sumPrice = this.sumPrice.toFixed(2);
 
           if (this.sumPrice >= 35 && this.sumPrice < 40){
             this.sumPrice -= 10;
@@ -352,6 +350,7 @@
             this.sumPrice -= 20;
             //  this.shoppingCartTableData.push({food: "优惠", number: 1, price: -20, singlePrice: 2})
           }
+          this.sumPrice = this.sumPrice.toFixed(2);
 
           this.shoppingCartTableData[this.shoppingCartTableData.length - 1].price = (tempSum - this.sumPrice).toFixed(0);
 
